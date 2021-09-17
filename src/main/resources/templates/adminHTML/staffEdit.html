@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/css/adminCSS/staffEdit.css"/>
+    <title th:text="${'Редактировать сотрудника'}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="">
+
+
+
+
+
+</head>
+<body>
+<section class="sectionRequest">
+    <div class="StaffsFilter">
+        <h1>Редактировать сотрудника</h1>
+        <div class="DivRequest" >
+            <div class="request">
+                <div class="c1">
+
+                    <div class="staffReq1">Фамилия</div>
+                    <div class="staffReq1">Имя</div>
+                    <div class="staffReq1">Отчество</div>
+                    <div class="staffReq1">Должность</div>
+                </div>
+                <div class="allDiv">
+
+                    <form  method="post">
+                        <div  th:each="el : ${post}" class="c1">
+
+                            <div class="staffReq"><input type="text"  th:value="${el.fname}" onkeyup="checkParams()" id="fname" name="fname" placeholder="Фамилия"></div>
+                            <div class="staffReq"><input type="text"  th:value="${el.lname}" onkeyup="checkParams()" id="lname" name="lname" placeholder="Имя"></div>
+                            <div class="staffReq"><input type="text"  th:value="${el.pname}" onkeyup="checkParams()" id="pname" name="pname" placeholder="Отчество"></div>
+                            <div class="staffReq"><input type="text"  th:value="${el.position}" onkeeyup="checkParams()" id="position" name="position" placeholder="Должность"></div>
+
+
+                        </div>
+                        <form class="wrap" th:action="@{/AllStaff}" method="post" >
+                            <!--   <input type="submit"  id="submit" class="btnDelete" value="Обновить"  > -->
+                            <button class="btnUpdate" type="submit">Обновить</button>
+                        </form>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</body>
+
+
+
+
+</html>

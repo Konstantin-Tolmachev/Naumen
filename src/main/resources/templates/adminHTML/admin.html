@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/css/adminCSS/admin.css"/>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<h1>Страница администратора</h1>
+
+
+<li class="h" sec:authorize="isAuthenticated()">
+    <form  th:action="@{/logout}" method="post">
+        <input class="btnSubmit" type="submit" value="Выйти">
+    </form>
+</li>
+
+
+
+<section class="addNewStaff">
+    <h1 >Добавить нового сотрудника</h1>
+
+    <div class="allDivName">
+        <div class="staffsName">Фамилия</div>
+        <div class="staffsName">Имя</div>
+        <div class="staffsName">Отчество</div>
+        <div class="staffsName">Должность</div>
+    </div>
+
+    <form  th:action="@{/admin}" method="post">
+        <div class="allDivName">
+                <div><input type="text" onkeyup="checkParams()" id="lname1" name="lname" placeholder="Фамилия"></di>
+                <div><input type="text" onkeyup="checkParams()" id="fname1" name="fname" placeholder="Имя"></div>
+                <div><input type="text" onkeyup="checkParams()" id="pname1" name="pname" placeholder="Отчество"></div>
+                <div><input type="text" onkeyup="checkParams()" id="position1" name="position" placeholder="Должность"></div>
+            </div>
+        </div>
+        <button class="btnStaff" type="submit">Добавить</button>
+    </form>
+    <!--    <button class="btnStaff" type="submit">Добавить</button>-->
+</section>
+
+<section class="sectionRequest">
+    <div class="StaffsFilter">
+        <h1>Список сотрудников</h1>
+        <div class="DivRequest" >
+            <form method="post"  th:action="staffFilter">
+                <input class="inn" type="hidden" name="filter" placeholder="Поиск по должности" id="position" />
+                <select class="inn" th:with="uniqueStaffs=${#sets.toSet(staffs)}" onchange=document.getElementById('position').value=this.options[this.selectedIndex].value>
+                    <option disabled selected >Должность</option>
+<!--                    isEmpty-->
+                    <option
+                            th:each="staff : ${uniqueStaffs}"
+                            th:value="${staff.position}"
+                            th:text="${staff.position}">
+
+                    </option>
+                </select>
+                <div class="DivRequest1" >
+                    <button class="btnComment" type="submit">Найти</button>
+                </div>
+            </form>
+        </div>
+
+        <div th:each="el : ${staffs}" class="request">
+            <div class="allDiv">
+                <div class="c1">
+                    <div class="staffReq1">Фамилия</div>
+                    <div class="staffReq1">Имя</div>
+                    <div class="staffReq1">Отчество</div>
+                    <div class="staffReq1">Должность</div>
+                </div>
+
+                <div class="c1" >
+                    <div th:text="${el.lname}" class="staffReq"><input type="text" id="lname" name="lname" ></div>
+                    <div th:text="${el.fname}" class="staffReq"><input type="text" id="fname" name="fname" ></div>
+                    <div th:text="${el.pname}" class="staffReq"><input type="text" id="pname" name="pname" ></div>
+                    <div th:text="${el.position}" class="staffReq"><input type="text" id="phonde" name="phone" ></div>
+                </div>
+
+                <div class="inline">
+                    <div class="btnEdit"><a th:href="'/admin/' + ${el.id} + '/edit'">Редактировать</a></div>
+                    <form  th:action="'/admin/' + ${el.id} +'/remove'" method="post">
+                        <button class="btnDelete" type="submit">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+</html>

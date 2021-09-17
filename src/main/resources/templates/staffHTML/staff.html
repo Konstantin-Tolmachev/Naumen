@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/css/authorization.css"/>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<h1>Страница сотрудника</h1>
+
+
+<li class="h" sec:authorize="isAuthenticated()">
+    <form  th:action="@{/logout}" method="post">
+        <input class="btnSubmit" type="submit" value="Выйти">
+    </form>
+</li>
+
+<li class="h" sec:authorize="hasRole('ROLE_STAFF')">
+    <form  th:action="@{/staff}">
+        <input class="btnSubmit" type="submit" value="Домой">
+    </form>
+</li>
+
+
+</body>
+</html>
