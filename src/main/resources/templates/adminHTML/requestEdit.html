@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/css/adminCSS/request.css">
+
+    <title th:text="${'Ответить на заявку'}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <header th:insert="blocksHTML/headerAdmin :: headerAdmin"></header>
+</head>
+
+
+<body>
+
+
+<section class="newRequest">
+    <h1 >Ответить на заявку</h1>
+
+    <form  method="post">
+        <div th:each="el : ${post}" class="allDivRequest">
+
+            <div class="DivRequest">
+                <input class="inn" type="text" th:value="${el.room}" onkeyup="checkParamsEdit()" id="roomEdit" name="room" placeholder="№ корпуса - № комнаты (*-***">
+            </div>
+
+            <div class="DivRequest">
+                <input   class="inn" th:value="${el.level}" onkeyup="checkParamsEdit()" name="level" placeholder="Уровень заявки" id="levelEdit" />
+                <select  class="inn" onchange=document.getElementById('levelEdit').value=this.options[this.selectedIndex].value>
+                    <option disabled selected >Уровень заявки</option>
+                    <option class="" value="Срочный">Срочный</option>
+                    <option class="" value="В течении дня">В течении дня</option>
+                </select>
+            </div>
+
+            <div class="DivRequest">
+                <input   class="inn" th:value="${el.fromWhom}" onkeyup="checkParamsEdit()" name="fromWhom" placeholder="От кого заявка" id="fromWhomEdit" />
+                <select  class="inn" onchange=document.getElementById('fromWhomEdit').value=this.options[this.selectedIndex].value>
+                    <option disabled selected >Заявитель</option>
+                    <option class="" value="Электромонтер">Электромонтер</option>
+                    <option class="" value="Сантехник">Сантехник</option>
+                    <option class="" value="Комплексный_рабочий">Комплексный рабочий</option>
+                    <option class="" value="Горничная">Горничная</option>
+                    <option class="" value="Администратор">Администратор</option>
+                    <option class="" value="Дежурная_мед_сестра">Дежурная мед. сестра</option>
+                    <option class="" value="Глав_врач">Глав. врач</option>
+                    <option class="" value="Директор">Директор</option>
+                    <option class="" value="Зав_хоз"> Зав. хоз</option>
+                    <option class="" value="Старшая_мед_сестра">Старшая мед. сестра</option>
+                    <option class="" value="Начальник_хоз_службы">Начальник хозю. службы</option>
+                    <option class="" value="Официант">Официант</option>
+                    <option class="" value="Начальник_столовой">Начальник столовой</option>
+                    <option class="" value="Работник_по_развлек_части">Работник по развлек. части</option>
+                    <option class="" value="Начальник_ПТС">Начальник ПТС</option>
+
+                </select>
+            </div>
+
+
+            <div class="DivRequest">
+                <input   class="inn" th:value="${el.toWhom}" onkeyup="checkParamsEdit()" name="toWhom" placeholder="Кому заявка" id="toWhomEdit" />
+                <select  class="inn" onchange=document.getElementById('toWhomEdit').value=this.options[this.selectedIndex].value>
+                    <option disabled selected >Исполнитель заявки</option>
+                    <option class="" value="Электромонтер">Электромонтер</option>
+                    <option class="" value="Сантехник">Сантехник</option>
+                    <option class="" value="Комплексный_рабочий">Комплексный рабочий</option>
+                    <option class="" value="Горничная">Горничная</option>
+                    <option class="" value="Администратор">Администратор</option>
+                    <option class="" value="Дежурная_мед_сестра">Дежурная мед. сестра</option>
+                    <option class="" value="Глав_врачи">Глав. врач</option>
+                    <option class="" value="Директор">Директор</option>
+                    <option class="" value="Зав_хоз"> Зав. хоз</option>
+                    <option class="" value="Старшая_мед_сестра">Старшая мед. сестра</option>
+                    <option class="" value="Начальник_хозю_службы">Начальник хозю. службы</option>
+                    <option class="" value="Официант">Официант</option>
+                    <option class="" value="Начальник_столовой">Начальник столовой</option>
+                    <option class="" value="Работник_по_развлек_части">Работник по развлек. части</option>
+                    <option class="" value="Начальник_ПТС">Начальник ПТС</option>
+                </select>
+            </div>
+
+
+
+            <div class="DivRequest">
+                <input   class="inn" th:value="${el.status}" onkeyup="checkParamsEdit()" name="status" placeholder="Статус" id="statusEdit" />
+                <select  class="inn" onchange=document.getElementById('statusEdit').value=this.options[this.selectedIndex].value>
+                    <option disabled selected >Статус</option>
+                    <option class="" value="Выполнено">Выполнено</option>
+                    <option class="" value="На выполнении">На выполнении</option>
+                    <option class="" value="Не выполнено">Не выполнено</option>
+                </select>
+            </div>
+
+            <div class="DivRequest">
+                <input class="inn" type="text" th:value="${el.fname}" onkeyup="checkParamsEdit()" id="fnameEdit" name="fname" placeholder="Фамилия">
+            </div>
+            <div class="DivRequest">
+                <input class="inn" type="text" th:value="${el.lname}" onkeyup="checkParamsEdit()" id="lnameEdit" name="lname" placeholder="Имя">
+            </div>
+            <div class="DivRequest">
+                <input class="inn" type="text" th:value="${el.pname}" onkeyup="checkParamsEdit()" id="pnameEdit" name="pname" placeholder="Отчество">
+            </div>
+
+<!--            <div class="DivRequest">-->
+<!--                <select required class="inn" onchange=document.getElementById('textEdit').value=this.options[this.selectedIndex].value>-->
+<!--                    <option disabled selected >Описание проблемы</option>-->
+<!--                    <option class="inn" value="Перегорела лампочка">Перегорела лампочка</option>-->
+<!--                    <option class="inn" value="Не работает розетка">Не работает розетка</option>-->
+<!--                    <option class="inn" value="Плохо показывает телевизор">Плохо показывает телевизор</option>-->
+<!--                    <option class="inn" value="Холодно в комнате">Холодно в комнате</option>-->
+<!--                    <option class="inn" value="Капает кран">Капает кран</option>-->
+<!--                    <option class="inn" value="Засор">Засор</option>-->
+<!--                    <option class="inn" value="Села батарейка в часах">Села батарейка в часах</option>-->
+<!--                    <option class="inn" value="Сломалась мебель">Сломалась мебель</option>-->
+<!--                    <option class="inn" value="Не закрывается дверь">Не закрывается дверь</option>-->
+<!--                    <option class="inn" value="Убрать в комнате">Убрать в комнате</option>-->
+<!--                    <option class="inn" value="Требуется манеж">Требуется манеж</option>-->
+<!--                    <option class="inn" value="Требуется раскладушка">Требуется раскладушка</option>-->
+<!--                    <option class="inn" value="Требуется полотенце">Требуется полотенце</option>-->
+<!--                    <option class="inn" value="Принести дистиллированную воду ">Принести дистиллированную воду </option>-->
+<!--                    <option class="inn" value="Принести питьевую воду ">Принести питьевую воду </option>-->
+<!--                </select>-->
+<!--            </div>-->
+
+            <div class="DivRequest">
+                <textarea  class="size" name="text" onkeyup="checkParamsEdit()" id="textEdit" placeholder="Описание проблемы" th:text="${el.text}"></textarea>
+            </div>
+            <div class="DivRequest">
+                <textarea  class="size" name="comment" onkeyup="checkParamsEdit()" id="textComment" placeholder="Оставить комментарий" th:text="${el.comment}"></textarea>
+            </div>
+            <form th:action="@{/admin-request}" method="post" >
+                <input type="submit"  id="submitEdit" class="btnComment1"  value="Ответить"  >
+            </form>
+        </div>
+    </form>
+</section>
+
+
+
+<div class="footer">
+    <p> &copy; Санаторий профилакторий "Озеро Глухое" 2021.</p>
+</div>
+
+
+
+<script src="/js/request.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
+
+</body>
+
+<!--<footer th:insert="blocks/footer :: footer"></footer>-->
+
+
+</html>

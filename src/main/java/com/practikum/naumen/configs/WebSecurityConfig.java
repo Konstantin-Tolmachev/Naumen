@@ -38,10 +38,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                 .antMatchers("/css/**","/img/**","/scripts/**").permitAll()
-                .antMatchers( "/resources/**", "/", "/registration", "/staff","/adminn")
+                .antMatchers( "/resources/**", "/", "/registration")
                 .permitAll()
-                .antMatchers("/staff").hasRole("STAFF")
-                .antMatchers("/admin/**","/staff-filter","/adminn/").hasRole("ADMIN")
+                .antMatchers("/staff-request/**").hasRole("STAFF")
+                .antMatchers("/admin/**","/staff-filter","/admin-request/").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

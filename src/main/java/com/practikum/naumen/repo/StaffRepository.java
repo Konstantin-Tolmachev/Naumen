@@ -1,21 +1,33 @@
 package com.practikum.naumen.repo;
 
 
+import com.practikum.naumen.models.Position;
+import com.practikum.naumen.models.Request;
 import com.practikum.naumen.models.Staff;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Stream;
 
-public interface StaffRepository extends JpaRepository<Staff, Long>  {
+public interface StaffRepository extends JpaRepository<Staff, Long> {
 
-    //    Вывод всей таблицы сотрудников
-    List<Staff> findAll();
+    //    Вывод всей таблицы сотрудников getUniqueTopicTitles
+
     //    ФИЛЬТРЫ
     List<Staff> findByPosition(String position);
+
    // Stream<Staff> findDistinctByPosition(String position);
+
+    List<Staff> findDistinctByPosition(String position);
+
+
+    List<Staff> findAllByOrderByIdDesc();
+    List<Staff> findAllByPositionOrderByIdDesc(String filter);
+
+//    @Query("select distinct t.position from Staff t")
+//    List<Staff> getUniqueStaffPositions();
 
     //position> Collection<String> findDistinctByPosition(position);
 

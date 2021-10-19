@@ -2,6 +2,10 @@ package com.practikum.naumen.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 
 @Entity
 public class Request {
@@ -12,24 +16,47 @@ public class Request {
     private Long id;
     @Column(name = "text", length = 1000)
     private String text;
-    private String level, room, fromWhom, toWhom, status, fname, lname, pname, createDate, endDate;
 
-    public Request(String level, String room, String fromWhom, String toWhom, String status, String text, String fname, String lname, String pname, String createDate, String endDate) {
+    private String room;
+
+    private String  level, fromWhom, toWhom, status, fname, lname, pname, createDate, endDate, comment;
+
+    public Request( String level, String room, String fromWhom,String text, String toWhom, String status, String fname, String lname, String pname, String createDate, String comment, String endDate) {
+
         this.level = level;
         this.room = room;
         this.fromWhom = fromWhom;
+        this.text = text;
         this.toWhom = toWhom;
         this.status = status;
-        this.text = text;
         this.fname = fname;
         this.lname = lname;
         this.pname = pname;
         this.createDate = createDate;
+        this.comment = comment;
         this.endDate = endDate;
     }
 
     public Request() {
     }
+
+//    public Request( String room, String level, String fromWhom, String text, String toWhom) {
+//        this.room = room;
+//        this.level = level;
+//        this.fromWhom = fromWhom;
+//        this.text = text;
+//        this.toWhom = toWhom;
+//    }
+
+//    public Request(String level, String room, String fromWhom, String text, String toWhom) {
+//        this.level = level;
+//        this.room = room;
+//        this.fromWhom = fromWhom;
+//        this.text = text;
+//        this.toWhom = toWhom;
+//
+//    }
+
 
     public Long getId() {
         return id;
@@ -125,5 +152,13 @@ public class Request {
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

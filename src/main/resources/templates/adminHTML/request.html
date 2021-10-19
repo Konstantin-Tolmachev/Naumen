@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/css/adminCSS/request.css">
+    <title th:text="${'Заявки'}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <header th:insert="blocksHTML/headerAdmin :: headerAdmin"></header>
+</head>
+<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
+<body>
+
+<section class="sectionRequest">
+    <section class="newRequest2">
+        <h1>Написать заявку</h1>
+
+        <form  th:action="@{/admin-request}"
+              method="post" class="form">
+            <div class="allDivRequest">
+
+                <div class="DivRequest" >
+
+                   <input class="inn"  onkeypress='validator(event)' id="room" type="text"  name="room" maxlength="10"   placeholder="№ кабинета*">
+
+                </div>
+
+
+                <div class="DivRequest">
+                    <input type="hidden" class="inn" onkeyup="checkParams()"  id="level" name="level" placeholder="Уровень заявки*"/>
+                    <select class="inn" required
+                            onchange="document.getElementById('level').value=this.value;">
+                        <option value="" disabled selected hidden>Уровень заявки*</option>
+                        <option value="Срочный">Срочный</option>
+                        <option value="В течении дня">В течении дня</option>
+                    </select>
+                </div>
+
+
+                <div class="DivRequest">
+                    <input list="characterFromWhom" class="inn" onkeyup="checkParams()" id="fromWhom" name="fromWhom" placeholder="Заявитель*">
+                    <datalist id="characterFromWhom" >
+                        <option th:each="position : ${positions}"
+                                th:value="${position.position}"
+                                th:text="${position.position}">
+                        </option>
+                    </datalist>
+                </div>
+
+                <div class="DivRequest">
+                    <input list="character" class="inn" onkeyup="checkParams()" id="toWhom" name="toWhom" placeholder="Исполнитель*">
+                <datalist id="character" >
+                    <option th:each="position : ${positions}"
+                            th:value="${position.position}"
+                            th:text="${position.position}">
+                    </option>
+                </datalist>
+            </div>
+
+                <div class="DivRequest">
+                    <textarea onkeyup="checkParams()" id="text" class="size" name="text"
+                              placeholder="Опишите пробелему*"></textarea>
+                </div>
+                <div class="DivRequest">
+<!--                    <input class="btnComment" id="submit" type="submit" disabled value="Отправить заявку">-->
+                    <Button class="btnComment" id="submit" type="submit" disabled="disabled" >Отправить заявку</Button>
+                </div>
+            </div>
+        </form>
+    </section>
+</section>
+
+
+<section class="sectionRequest">
+    <div class="newRequest1">
+        <h1>Список заявок</h1>
+        <div class="DivRequest">
+            <form method="post" th:action="filter-request">
+                <input  type="hidden" id="statusFilter" onkeyup="checkParamsFilter()" name="filter" placeholder="Поиск по статусу заявки" />
+                <select class="inn" required
+                        onchange="document.getElementById('statusFilter').value=this.value;">
+<!--                        onchange=document.getElementById('statusFilter').value=this.options[this.selectedIndex].value>-->
+                    <option value="" disabled selected hidden>Статус заявки</option>
+                    <option value="Выполнено">Выполнено</option>
+                    <option value="На выполнении">На выполнении</option>
+                    <option value="Не выполнено">Не выполнено</option>
+                </select>
+                <div class="DivRequest1">
+                    <button class="btnComment" id="submitFilter" disabled type="submit">Найти</button>
+                </div>
+            </form>
+        </div>
+
+        <div th:each="el : ${requests}" class="request">
+            <h4>Заказчик:</h4>
+            <div class="allDiv">
+                <div class="c1">
+                    <div class="staffReq">Дата подачи заявки</div>
+                    <div class="staffReq">Уровень</div>
+                    <div class="staffReq">№ кабинета</div>
+                    <div class="staffReq">Заказчик</div>
+                </div>
+                <div class="c1">
+                    <div th:text="${el.createDate}" class="staffReq"><input type="text" id="createDate"
+                                                                            name="createDate"></div>
+                    <div th:text="${el.level}" class="staffReq"><input type="text" id="Rlevel" name="level"></div>
+                    <div th:text="${el.room}" class="staffReq"><input type="text" id="Rroom" name="room"></div>
+                    <div th:text="${el.fromWhom}" class="staffReq"><input type="text" id="RfromWhom" name="fromWhom">
+                    </div>
+                </div>
+                <h4>Именование заявки:</h4>
+                <div class="c2">
+                    <div th:text="${el.text}" class="wrap2"><textarea type="text" id="Rtext" name="text"></textarea>
+                    </div>
+                </div>
+                <h4>Исполнитель:</h4>
+                <div class="c3">
+                    <div class="staffReq">Исполнитель</div>
+                    <div class="staffReq">Статус</div>
+                    <div class="staffReq">Фамилия</div>
+                    <div class="staffReq">Имя</div>
+                    <div class="staffReq">Отчество</div>
+                    <div class="staffReq">Дата выполнения</div>
+                </div>
+
+
+                <div class="c3">
+                    <div th:text="${el.toWhom}" class="staffReq"><input type="text" id="RtoWhom" name="toWhom"></div>
+                    <div th:text="${el.status}" class="staffReq"><input type="text" id="status" name="status"></div>
+                    <div th:text="${el.fname}" class="staffReq"><input type="text" id="fname" name="fname"></div>
+                    <div th:text="${el.lname}" class="staffReq"><input type="text" id="lname" name="lname"></div>
+                    <div th:text="${el.pname}" class="staffReq"><input type="text" id="pname" name="pname"></div>
+                    <div th:text="${el.endDate}" class="staffReq"><input type="text" id="endDate" name="endDate"></div>
+                </div>
+
+                <h4>Комментарий:</h4>
+                <div class="c2">
+                    <div th:text="${el.comment}" class="wrap2"><textarea type="text" id="Ctext" name="comment"></textarea>
+                    </div>
+                </div>
+
+                <div class="inline">
+                    <div class="btnEdit"><a th:href="'/admin-request/' + ${el.id} + '/edit'">Редактировать</a></div>
+                    <form th:action="'/admin-request/' + ${el.id} +'/remove'" method="post">
+                        <button class="btnDelete" type="submit">Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="footer">
+    <p> &copy; "Предприятие "АБЦ" 2021.</p>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="/js/request.js"></script>
+
+</body>
+
+</html>

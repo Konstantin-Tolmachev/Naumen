@@ -5,17 +5,11 @@
     <link rel="stylesheet" href="/css/adminCSS/admin.css"/>
     <title th:text="${title}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <header th:insert="blocksHTML/headerAdmin :: headerAdmin"></header>
 </head>
 <body>
 
-<h1>Страница администратора</h1>
-
-
-<li class="h" sec:authorize="isAuthenticated()">
-    <form  th:action="@{/logout}" method="post">
-        <input class="btnSubmit" type="submit" value="Выйти">
-    </form>
-</li>
 
 
 
@@ -31,35 +25,40 @@
 
     <form  th:action="@{/admin}" method="post">
         <div class="allDivName">
-                <div><input type="text" onkeyup="checkParams()" id="lname1" name="lname" placeholder="Фамилия"></di>
-                <div><input type="text" onkeyup="checkParams()" id="fname1" name="fname" placeholder="Имя"></div>
-                <div><input type="text" onkeyup="checkParams()" id="pname1" name="pname" placeholder="Отчество"></div>
-                <div><input type="text" onkeyup="checkParams()" id="position1" name="position" placeholder="Должность"></div>
+                <div><input type="text" onkeyup="checkParamsAddNewStaff()" id="addLname" name="lname" placeholder="Фамилия"></di>
+                <div><input type="text" onkeyup="checkParamsAddNewStaff()" id="addFname" name="fname" placeholder="Имя"></div>
+                <div><input type="text" onkeyup="checkParamsAddNewStaff()" id="addPname" name="pname" placeholder="Отчество"></div>
+                <div><input list="character" onkeyup="checkParamsAddNewStaff()" id="addPosition" name="position" placeholder="Должность"></div>
+                    <datalist id="character" >
+                        <option th:each="staff : ${positions}"
+                                th:value="${staff}"
+                                th:text="${staff}">
+                        </option>
+                    </datalist>
             </div>
         </div>
-        <button class="btnStaff" type="submit">Добавить</button>
+        <button class="btnStaff" id="btnAddNewStaff" disabled type="submit">Добавить</button>
     </form>
-    <!--    <button class="btnStaff" type="submit">Добавить</button>-->
+
 </section>
 
 <section class="sectionRequest">
     <div class="StaffsFilter">
         <h1>Список сотрудников</h1>
-        <div class="DivRequest" >
-            <form method="post"  th:action="staffFilter">
-                <input class="inn" type="hidden" name="filter" placeholder="Поиск по должности" id="position" />
-                <select class="inn" th:with="uniqueStaffs=${#sets.toSet(staffs)}" onchange=document.getElementById('position').value=this.options[this.selectedIndex].value>
-                    <option disabled selected >Должность</option>
-<!--                    isEmpty-->
-                    <option
-                            th:each="staff : ${uniqueStaffs}"
-                            th:value="${staff.position}"
-                            th:text="${staff.position}">
 
+        <div class="DivRequest" >
+            <form method="post" th:action="filter-staff">
+                <input  class="inn" list="characterFilter" name="filter" placeholder="Поиск" />
+                <datalist id="characterFilter" >
+
+                    <option th:each="position : ${positions}"
+                            th:value="${position}"
+                            th:text="${position}">
                     </option>
-                </select>
-                <div class="DivRequest1" >
-                    <button class="btnComment" type="submit">Найти</button>
+
+                </datalist>
+                <div class="DivRequest1">
+                    <button class="btnComment" id="submitFilter"  type="submit">Найти</button>
                 </div>
             </form>
         </div>
@@ -91,6 +90,11 @@
     </div>
 </section>
 
+<div class="footer">
+    <p> &copy; "Предприятие "АБЦ" 2021.</p>
+</div>
 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="/js/request.js"></script>
 </body>
 </html>

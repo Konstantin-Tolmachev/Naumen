@@ -25,6 +25,11 @@ public class Staff {
     public Staff() {
     }
 
+    public static void stream() {
+    }
+
+
+
     public Long getId() {
         return id;
     }

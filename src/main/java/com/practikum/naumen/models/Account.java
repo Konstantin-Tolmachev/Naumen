@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
 
@@ -16,13 +17,21 @@ public class Account extends AdminController implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(min=3)
     private String username;
+    @Size(min=3)
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
     public Account() {
+    }
+
+    public Account(String username, String password) {
+        this.username = username;
+        this.password = password;
+
     }
 
     public Long getId() {

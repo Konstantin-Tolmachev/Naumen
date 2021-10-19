@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/css/adminCSS/account.css"/>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <header th:insert="blocksHTML/headerAdmin :: headerAdmin"></header>
+</head>
+<body>
+
+
+
+<section class="sectionRequest">
+    <div class="Roles">
+        <h1>Доступные роли</h1>
+        <div class="DivRequest" >
+        </div>
+
+        <div class="c1">
+            <div class="staffReq1">Id</div>
+            <div class="staffReq1">Именование роли</div>
+        </div>
+
+        <div th:each="el : ${roles}"  class="request">
+            <div class="allDiv">
+                <div class="c1" >
+                    <div th:text="${el.id}" class="staffReq"><input type="text" id="e" name="lname" ></div>
+                    <div th:text="${el.name}" class="staffReq"><input type="text" id="f" name="fname" ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="addNewStaff">
+    <h1 >Добавить аккаунт</h1>
+
+    <div class="allDivName">
+        <div class="staffsName1">Логин</div>
+        <div class="staffsName1">Пароль</div>
+        <div class="staffsName1">Роль</div>
+    </div>
+
+    <form th:action="@{/admin-account}" th:object="${userForm}" method="post">
+        <input type="hidden" th:field="*{id}" th:value="${userForm.id}">
+            <div class="allDivName">
+                <div>
+                    <input  onkeyup="checkParamsAddAccount()" id="username" th:field="*{username}" placeholder="Логин*">
+
+                    <p th:if="${#fields.hasErrors('username')} "
+                       th:class="${#fields.hasErrors('username')}? error">Минимальное значение 3 символа</p>
+                    <p th:text="${usernameError}"  class="error"></p>
+<!--                    <p th:if="${#fields.hasErrors('username')} " th:class="${#fields.hasErrors('username')}? error"></p>-->
+<!--                    <p th:if="${#fields.hasErrors('username')} " th:class="${#fields.hasErrors('username')}? error">Минимальное значение 3 символа</p>-->
+
+                </div>
+
+
+                <div>
+                    <input type="password" onkeyup="checkParamsAddAccount()" id="password" th:field="*{password}" placeholder="Пароль*">
+                    <p th:if="${#fields.hasErrors('password')}"
+                       th:class="${#fields.hasErrors('password')}? error">Минимальное значение 3 символа</p>
+                </div>
+
+
+                <input list="characterRoles"  th:field="*{roles}" onkeyup="checkParamsAddAccount()" id="roles"  placeholder="Права доступа*">
+                <datalist id="characterRoles" >
+                    <option th:each="role : ${listRoles}"
+                            th:text="${role.name}"
+                            th:value="${role.id}">
+                    </option>
+                </datalist>
+            </div>
+
+
+<!--                <input list="characterRoles"  th:field="*{roles}" onkeyup="checkParamsAddAccount()" id="roles"  placeholder="Права доступа*">-->
+<!--                <datalist id="characterRoles" >-->
+<!--                    <option th:each="role : ${listRoles}"-->
+<!--                            th:text="${role.name}"-->
+<!--                            th:value="${role.id}">-->
+<!--                    </option>-->
+<!--                </datalist>-->
+<!--        </div>-->
+<!--        <p th:text="${usernameError}"  class="error"></p>-->
+
+<!--        <p th:if="${#fields.hasErrors('username')}"-->
+<!--           th:class="${#fields.hasErrors('username')}? error">Логин: Минимальное значение 3 символа</p>-->
+
+<!--        <p th:if="${#fields.hasErrors('password')}"-->
+<!--           th:class="${#fields.hasErrors('password')}? error">Пароль: Минимальное значение 3 символа</p>-->
+
+        <button class="btnAddAccount" id="btnAddAccount" disabled type="submit">Добавить</button>
+    </form>
+
+</section>
+
+<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+<section class="allAccount">
+
+    <h1 >Список аккаунтов</h1>
+
+    <div class="allDivName">
+        <div class="staffsName1">Логин</div>
+        <div class="staffsName1">Пароль</div>
+        <div class="staffsName1">Роль</div>
+    </div>
+
+    <div th:each="el : ${accounts}" th:field="*{roles}" th:object="${userForm}" class="request" >
+<!--        <input type="text" th:field="*{id}" th:value="${userForm.id}">-->
+        <div class="allDivName" >
+            <div th:text="${el.username}"></div>
+            <div th:text="${el.password}"></div>
+<!--            th:text="${role.name}"-->
+        </div>
+
+        <form  th:action="'/admin-account/' + ${el.id} +'/remove'" method="post">
+            <button class="btnDelete" type="submit">Удалить</button>
+        </form>
+
+    </div>
+<!--        <input type="text" th:field="*{roles}" >-->
+<!--            <div th:each="role : ${listRoles}"  class="allDivName">-->
+<!--                <div th:text="${role.name}"></div>-->
+<!--            </div>-->
+
+</section>
+
+
+
+<!--<section class="sectionRequest">-->
+<!--    <div class="StaffsFilter">-->
+<!--        <h1>Список аккаунтов</h1>-->
+<!--        <div class="DivRequest" ></div>-->
+<!--        -->
+<!--        <div class="c1">-->
+<!--            <div class="staffReq1">Логин</div>-->
+<!--            <div class="staffReq1">Пароль</div>-->
+<!--&lt;!&ndash;            <div class="staffReq1">Имя роли</div>&ndash;&gt;-->
+<!--        </div>-->
+
+<!--        <div th:each="el : ${accounts}"    class="request">-->
+
+<!--                <div class="allDiv">-->
+<!--                    <div class="c1" >-->
+
+<!--                        <div th:text="${el.username}" class="staffReq"><input type="text" id="fname" name="fname" ></div>-->
+<!--                        <div th:text="${el.password}" class="staffReq"><input type="text" id="passwordq" name="password" ></div>-->
+
+<!--                    </div>-->
+
+<!--                    <div class="inline">-->
+
+<!--                        <form  th:action="'/admin-account/' + ${el.id} +'/remove'" method="post">-->
+<!--                            <button class="btnDelete" type="submit">Удалить</button>-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<div class="footer">
+    <p> &copy; "Предприятие "АБЦ" 2021.</p>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="/js/request.js"></script>
+</body>
+</html>

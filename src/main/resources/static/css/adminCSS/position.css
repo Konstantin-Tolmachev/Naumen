@@ -90,7 +90,7 @@ body {
     font-size: 1.3rem;
 }
 
-input#addLname, #addFname, #addPname, #addPosition{
+input#addNewPosition{
     width: 100%;
     height: 40px;
     font-size: 1.3rem;
@@ -107,7 +107,7 @@ input#addLname, #addFname, #addPname, #addPosition{
     padding-bottom: 1%;
 }
 
-.btnStaff{
+.btnAddNewPosition{
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 1%;
@@ -118,7 +118,7 @@ input#addLname, #addFname, #addPname, #addPosition{
     color: green;
 }
 
-.btnStaff:hover{
+.btnAddNewPosition:hover{
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
     opacity: 1;
@@ -156,6 +156,7 @@ input#addLname, #addFname, #addPname, #addPosition{
     margin-bottom: 3%;
     border-radius: 5px;
     background-color: white;
+
     height: 900px;
     overflow: scroll;
     overflow-x: hidden;
@@ -237,7 +238,8 @@ input#addLname, #addFname, #addPname, #addPosition{
 
 .staffReq1{
     display: table;
-    margin:  auto;
+    margin-left: 35%;
+    margin-bottom: 30%;
     padding-bottom: 3%;
     font-size: 1.1rem;
     font-weight: bold;
