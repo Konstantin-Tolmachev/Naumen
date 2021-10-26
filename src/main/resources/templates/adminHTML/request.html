@@ -39,22 +39,24 @@
 
 
                 <div class="DivRequest">
-                    <input list="characterFromWhom" class="inn" onkeyup="checkParams()" id="fromWhom" name="fromWhom" placeholder="Заявитель*">
+                    <input list="characterFromWhom" th:value="${#authentication.name}" class="inn" onkeyup="checkParams()" id="fromWhom" name="fromWhom" placeholder="Заявитель*">
                     <datalist id="characterFromWhom" >
                         <option th:each="position : ${positions}"
-                                th:value="${position.position}"
-                                th:text="${position.position}">
+                                th:value="${position}"
+                                th:text="${position}">
                         </option>
+
                     </datalist>
                 </div>
 
                 <div class="DivRequest">
-                    <input list="character" class="inn" onkeyup="checkParams()" id="toWhom" name="toWhom" placeholder="Исполнитель*">
+                    <input list="character"  class="inn" onkeyup="checkParams()" id="toWhom" name="toWhom" placeholder="Исполнитель*">
                 <datalist id="character" >
                     <option th:each="position : ${positions}"
-                            th:value="${position.position}"
-                            th:text="${position.position}">
+                            th:value="${position}"
+                            th:text="${position}">
                     </option>
+
                 </datalist>
             </div>
 
@@ -77,17 +79,25 @@
         <h1>Список заявок</h1>
         <div class="DivRequest">
             <form method="post" th:action="filter-request">
-                <input  type="hidden" id="statusFilter" onkeyup="checkParamsFilter()" name="filter" placeholder="Поиск по статусу заявки" />
-                <select class="inn" required
-                        onchange="document.getElementById('statusFilter').value=this.value;">
-<!--                        onchange=document.getElementById('statusFilter').value=this.options[this.selectedIndex].value>-->
+                <input  class="inn"  list="characterFilterRequest" name="toWhom" placeholder="Должность" />
+                <datalist id="characterFilterRequest" >
+
+                    <option th:each="position : ${positions}"
+                            th:value="${position}"
+                            th:text="${position}">
+                    </option>
+                </datalist>
+
+
+                <input  type="hidden" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />
+                <select class="inn" onchange="document.getElementById('statusFilter').value=this.value">
                     <option value="" disabled selected hidden>Статус заявки</option>
                     <option value="Выполнено">Выполнено</option>
                     <option value="На выполнении">На выполнении</option>
                     <option value="Не выполнено">Не выполнено</option>
                 </select>
                 <div class="DivRequest1">
-                    <button class="btnComment" id="submitFilter" disabled type="submit">Найти</button>
+                    <button class="btnComment" id="submitFilter" type="submit">Найти</button>
                 </div>
             </form>
         </div>
@@ -118,9 +128,10 @@
                 <div class="c3">
                     <div class="staffReq">Исполнитель</div>
                     <div class="staffReq">Статус</div>
-                    <div class="staffReq">Фамилия</div>
-                    <div class="staffReq">Имя</div>
-                    <div class="staffReq">Отчество</div>
+                    <div class="staffReq">ФИО</div>
+<!--                    <div class="staffReq">Фамилия</div>-->
+<!--                    <div class="staffReq">Имя</div>-->
+<!--                    <div class="staffReq">Отчество</div>-->
                     <div class="staffReq">Дата выполнения</div>
                 </div>
 
@@ -128,9 +139,7 @@
                 <div class="c3">
                     <div th:text="${el.toWhom}" class="staffReq"><input type="text" id="RtoWhom" name="toWhom"></div>
                     <div th:text="${el.status}" class="staffReq"><input type="text" id="status" name="status"></div>
-                    <div th:text="${el.fname}" class="staffReq"><input type="text" id="fname" name="fname"></div>
-                    <div th:text="${el.lname}" class="staffReq"><input type="text" id="lname" name="lname"></div>
-                    <div th:text="${el.pname}" class="staffReq"><input type="text" id="pname" name="pname"></div>
+                    <div th:text="${el.name}" class="staffReq"><input type="text" id="name" name="name"></div>
                     <div th:text="${el.endDate}" class="staffReq"><input type="text" id="endDate" name="endDate"></div>
                 </div>
 

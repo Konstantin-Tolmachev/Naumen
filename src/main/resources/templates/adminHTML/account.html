@@ -53,8 +53,6 @@
                     <p th:if="${#fields.hasErrors('username')} "
                        th:class="${#fields.hasErrors('username')}? error">Минимальное значение 3 символа</p>
                     <p th:text="${usernameError}"  class="error"></p>
-<!--                    <p th:if="${#fields.hasErrors('username')} " th:class="${#fields.hasErrors('username')}? error"></p>-->
-<!--                    <p th:if="${#fields.hasErrors('username')} " th:class="${#fields.hasErrors('username')}? error">Минимальное значение 3 символа</p>-->
 
                 </div>
 
@@ -76,28 +74,10 @@
             </div>
 
 
-<!--                <input list="characterRoles"  th:field="*{roles}" onkeyup="checkParamsAddAccount()" id="roles"  placeholder="Права доступа*">-->
-<!--                <datalist id="characterRoles" >-->
-<!--                    <option th:each="role : ${listRoles}"-->
-<!--                            th:text="${role.name}"-->
-<!--                            th:value="${role.id}">-->
-<!--                    </option>-->
-<!--                </datalist>-->
-<!--        </div>-->
-<!--        <p th:text="${usernameError}"  class="error"></p>-->
-
-<!--        <p th:if="${#fields.hasErrors('username')}"-->
-<!--           th:class="${#fields.hasErrors('username')}? error">Логин: Минимальное значение 3 символа</p>-->
-
-<!--        <p th:if="${#fields.hasErrors('password')}"-->
-<!--           th:class="${#fields.hasErrors('password')}? error">Пароль: Минимальное значение 3 символа</p>-->
-
         <button class="btnAddAccount" id="btnAddAccount" disabled type="submit">Добавить</button>
     </form>
 
 </section>
-
-<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
 <section class="allAccount">
 

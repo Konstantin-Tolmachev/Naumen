@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/css/adminCSS/requestStatus.css">
+    <title th:text="${'Статус заявок'}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <header th:insert="blocksHTML/headerAdmin :: headerAdmin"></header>
+</head>
+<body>
+
+<section class="sectionRequest">
+    <div class="newRequest1">
+        <h1>Список заявок</h1>
+        <div class="DivRequest">
+            <form method="post" th:action="filter-request-from-whom">
+                <input  class="inn"  list="characterFilterRequest" name="fromWhom" placeholder="Должность" />
+                <datalist id="characterFilterRequest" >
+
+                    <option th:each="position : ${positions}"
+                            th:value="${position}"
+                            th:text="${position}">
+                    </option>
+                </datalist>
+
+
+                <input  type="hidden" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />
+                <select class="inn" onchange="document.getElementById('statusFilter').value=this.value">
+                    <option value="" disabled selected hidden>Статус заявки</option>
+                    <option value="Выполнено">Выполнено</option>
+                    <option value="На выполнении">На выполнении</option>
+                    <option value="Не выполнено">Не выполнено</option>
+                </select>
+                <div class="DivRequest1">
+                    <button class="btnComment" id="submitFilter" type="submit">Найти</button>
+                </div>
+            </form>
+        </div>
+
+        <div th:each="el : ${requests}" class="request">
+<div class="inline">
+    <div class="nameRequest">
+        <h4>Исполнитель:</h4>
+        <p class="p" th:text="${el.toWhom}"></p>
+    </div>
+
+    <div class="nameRequest">
+        <h4>Статус:</h4>
+        <p class="p" th:text="${el.status}"></p>
+    </div>
+
+    <div class="nameRequest">
+        <h4>Именование заявки:</h4>
+        <label>
+            <p class="p" th:text="${el.text}"></p>
+        </label>
+    </div>
+
+    <div class="nameRequest">
+        <h4>Комментарий:</h4>
+        <label>
+            <p class="p" th:text="${el.comment}"></p>
+        </label>
+    </div>
+</div>
+
+        </div>
+    </div>
+</section>
+
+
+<div class="footer">
+    <p> &copy; "Предприятие "АБЦ" 2021.</p>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="/js/request.js"></script>
+
+</body>
+
+</html>

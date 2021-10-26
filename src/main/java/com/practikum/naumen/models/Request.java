@@ -19,9 +19,9 @@ public class Request {
 
     private String room;
 
-    private String  level, fromWhom, toWhom, status, fname, lname, pname, createDate, endDate, comment;
+    private String  level, fromWhom, toWhom, status, name, createDate, endDate, comment;
 
-    public Request( String level, String room, String fromWhom,String text, String toWhom, String status, String fname, String lname, String pname, String createDate, String comment, String endDate) {
+    public Request( String level, String room, String fromWhom,String text, String toWhom, String status, String name, String createDate, String comment, String endDate) {
 
         this.level = level;
         this.room = room;
@@ -29,9 +29,7 @@ public class Request {
         this.text = text;
         this.toWhom = toWhom;
         this.status = status;
-        this.fname = fname;
-        this.lname = lname;
-        this.pname = pname;
+        this.name = name;
         this.createDate = createDate;
         this.comment = comment;
         this.endDate = endDate;
@@ -39,24 +37,6 @@ public class Request {
 
     public Request() {
     }
-
-//    public Request( String room, String level, String fromWhom, String text, String toWhom) {
-//        this.room = room;
-//        this.level = level;
-//        this.fromWhom = fromWhom;
-//        this.text = text;
-//        this.toWhom = toWhom;
-//    }
-
-//    public Request(String level, String room, String fromWhom, String text, String toWhom) {
-//        this.level = level;
-//        this.room = room;
-//        this.fromWhom = fromWhom;
-//        this.text = text;
-//        this.toWhom = toWhom;
-//
-//    }
-
 
     public Long getId() {
         return id;
@@ -114,28 +94,12 @@ public class Request {
         this.text = text;
     }
 
-    public String getFname() {
-        return fname;
+    public String getName() {
+        return name;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
-    }
-
-    public String getPname() {
-        return pname;
-    }
-
-    public void setPname(String pname) {
-        this.pname = pname;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCreateDate() {

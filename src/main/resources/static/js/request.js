@@ -1,3 +1,13 @@
+const $fname = document.querySelector('[name=fname]');
+const $lname = document.querySelector('[name=lname]');
+const $pname = document.querySelector('[name=pname]');
+
+document.querySelector('select').addEventListener(`change`, e => {
+    const $option = e.target.options[e.target.selectedIndex];
+    $fname.value = $option.dataset.fname;
+    $lname.value = $option.dataset.lname;
+    $pname.value = $option.dataset.pname;
+});
 
 /* Кнопка доступна, если все поля заполнены в форме для написания заявки request.html*/
 function checkParams() {
@@ -64,18 +74,7 @@ function checkParamsAddNewStaff() {
     }
 }
 
-/* Кнопка доступна, если все поля заполнены в форме для добавления новой должности position.html*/
-function checkParamsAddNewPosition() {
 
-    var addNewPosition = $('#addNewPosition').val();
-
-    if(addNewPosition.length !== 0  ) {
-
-        $('#btnAddNewPosition').removeAttr('disabled');
-    } else {
-        $('#btnAddNewPosition').attr('disabled', 'disabled');
-    }
-}
 
 /* Кнопка доступна, если все поля заполнены в форме для добавления новой должности position.html*/
 function checkParamsAddAccount() {
@@ -93,6 +92,23 @@ function checkParamsAddAccount() {
 }
 
 
+/* Кнопка доступна, если все поля заполнены в форме для ответа на заявку у сотрудников requestEdit.html*/
+function checkParamsStaffRequestEdit() {
+    var toWhomEditStaff = $('#toWhomEditStaff').val();
+    var statusEditStaff = $('#statusEditStaff').val();
+    var nameEditStaff = $('#nameEditStaff').val();
+    var textEditStaff = $('#textEditStaff').val();
+
+
+    if(toWhomEditStaff.length !== 0 && statusEditStaff.length !== 0 && nameEditStaff.length !== 0 && textEditStaff.length !== 0 ) {
+
+        $('#submitEditStaff').removeAttr('disabled');
+    } else {
+        $('#submitEditStaff').attr('disabled', 'disabled');
+    }
+}
+
+
     // В поле room можно вводить только цифры
 
 function validator(evt) {
@@ -105,3 +121,4 @@ function validator(evt) {
         if(theEvent.preventDefault) theEvent.preventDefault();
     }
 }
+

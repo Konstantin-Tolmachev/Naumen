@@ -185,6 +185,13 @@ body {
     font-size: 1.3rem;
 }
 
+.inc{
+    color: gray;
+    width: 36%;
+    height: 40px;
+    font-size: 1.3rem;
+}
+
 .size{
     width: 72%;
     height: 100px;
@@ -217,7 +224,7 @@ body {
 .btnComment1{
     /*margin-left: 2%;*/
     margin-top: 1%;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 1%;
@@ -229,6 +236,24 @@ body {
 }
 
 .btnComment1:hover{
+    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
+    color: black;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.btnBack{
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: .9rem;
+    cursor: pointer;
+    background: white;
+    color: green;
+}
+
+.btnBack:hover{
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
     opacity: 1;
@@ -291,7 +316,7 @@ body {
 }
 
 .c3{
-    column-count: 6;
+    column-count: 4;
     margin-left: 3%;
     margin-right: 3%;
 }

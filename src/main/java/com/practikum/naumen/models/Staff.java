@@ -28,8 +28,6 @@ public class Staff {
     public static void stream() {
     }
 
-
-
     public Long getId() {
         return id;
     }
