@@ -51,14 +51,13 @@
 
                 <div class="DivRequest">
                     <input list="character"  class="inn" onkeyup="checkParams()" id="toWhom" name="toWhom" placeholder="Исполнитель*">
-                <datalist id="character" >
-                    <option th:each="position : ${positions}"
-                            th:value="${position}"
-                            th:text="${position}">
-                    </option>
-
-                </datalist>
-            </div>
+                    <datalist id="character" >
+                        <option th:each="position : ${positions}"
+                                th:value="${position}"
+                                th:text="${position}">
+                        </option>
+                    </datalist>
+                </div>
 
                 <div class="DivRequest">
                     <textarea onkeyup="checkParams()" id="text" class="size" name="text"
@@ -66,7 +65,7 @@
                 </div>
                 <div class="DivRequest">
 <!--                    <input class="btnComment" id="submit" type="submit" disabled value="Отправить заявку">-->
-                    <Button class="btnComment" id="submit" type="submit" disabled="disabled" >Отправить заявку</Button>
+                    <Button class="btnAddRequest" id="submit" type="submit" disabled="disabled" >Отправить заявку</Button>
                 </div>
             </div>
         </form>
@@ -79,7 +78,7 @@
         <h1>Список заявок</h1>
         <div class="DivRequest">
             <form method="post" th:action="filter-request">
-                <input  class="inn"  list="characterFilterRequest" name="toWhom" placeholder="Должность" />
+                <input  class="inn"  list="characterFilterRequest" id="toWhomFilter" name="toWhom" placeholder="Должность" />
                 <datalist id="characterFilterRequest" >
 
                     <option th:each="position : ${positions}"
@@ -89,7 +88,7 @@
                 </datalist>
 
 
-                <input  type="hidden" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />
+                <input  type="hidden" id="statusFilter"   name="filter" placeholder="Поиск по статусу заявки" />
                 <select class="inn" onchange="document.getElementById('statusFilter').value=this.value">
                     <option value="" disabled selected hidden>Статус заявки</option>
                     <option value="Выполнено">Выполнено</option>
@@ -97,7 +96,7 @@
                     <option value="Не выполнено">Не выполнено</option>
                 </select>
                 <div class="DivRequest1">
-                    <button class="btnComment" id="submitFilter" type="submit">Найти</button>
+                    <button class="btnSearchFilter" id="submitFilter" type="submit">Найти</button>
                 </div>
             </form>
         </div>
@@ -129,9 +128,6 @@
                     <div class="staffReq">Исполнитель</div>
                     <div class="staffReq">Статус</div>
                     <div class="staffReq">ФИО</div>
-<!--                    <div class="staffReq">Фамилия</div>-->
-<!--                    <div class="staffReq">Имя</div>-->
-<!--                    <div class="staffReq">Отчество</div>-->
                     <div class="staffReq">Дата выполнения</div>
                 </div>
 

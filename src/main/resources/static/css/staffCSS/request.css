@@ -202,7 +202,64 @@ body {
     font-size: 1.3rem;
 }
 
-.btnComment{
+input#room, #level, #fromWhom, #toWhom, #toWhomFilter, #statusFilter,
+     #roomEdit, #levelEdit, #fromWhomEdit, #toWhomEditStaff, #statusEditStaff, #nameEditStaff, #nameEdit{
+        font-size: 1.3rem;
+        line-height: 100%;
+        text-indent: 2%;
+}
+
+textarea#text,
+        #textEditStaff,#commentEditStaff{
+            font-size: 1.3rem;
+            line-height: 150%;
+            text-indent: 1%;
+}
+
+.btnAddRequest {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: .9rem;
+    cursor: pointer;
+    background: white;
+    color: green;
+}
+.btnAddRequest[disabled]:hover {
+    cursor: default;
+}
+.btnAddRequest:hover:not([disabled])  {
+    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
+    color: black;
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+.btnReplyRequest {
+    margin-bottom: 1%;
+    margin-top: 0.8%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: .9rem;
+    cursor: pointer;
+    background: white;
+    color: green;
+}
+.btnReplyRequest[disabled]:hover {
+    cursor: default;
+}
+.btnReplyRequest:hover:not([disabled])  {
+    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
+    color: black;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.btnSearchFilter{
     margin-bottom: 2%;
     padding-left: 3%;
     padding-right: 3%;
@@ -214,12 +271,30 @@ body {
     color: green;
 }
 
-.btnComment:hover{
+.btnSearchFilter:hover{
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
     opacity: 1;
     cursor: pointer;
 }
+/*.btnComment{*/
+/*    margin-bottom: 2%;*/
+/*    padding-left: 3%;*/
+/*    padding-right: 3%;*/
+/*    padding-top: 1%;*/
+/*    padding-bottom: 1%;*/
+/*    font-size: .9rem;*/
+/*    cursor: pointer;*/
+/*    background: white;*/
+/*    color: green;*/
+/*}*/
+
+/*.btnComment:hover{*/
+/*    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;*/
+/*    color: black;*/
+/*    opacity: 1;*/
+/*    cursor: pointer;*/
+/*}*/
 
 .btnComment1{
     /*margin-left: 2%;*/
@@ -409,7 +484,7 @@ body {
     opacity: 1;
     cursor: pointer;
     color: black;
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     transition: all .2s ease-in-out;
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }

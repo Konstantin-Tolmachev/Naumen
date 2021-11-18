@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
@@ -19,9 +21,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserService userService;
+
+//    @Bean
+//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
     }
 
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
@@ -36,11 +44,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
 
                 .authorizeRequests()
-                .antMatchers("/css/**","/img/**","/scripts/**").permitAll()
-                .antMatchers( "/resources/**", "/", "/registration")
-                .permitAll()
-                .antMatchers("/staff-request/**").hasRole("STAFF")
-                .antMatchers("/admin/**","/staff-filter","/admin-request/").hasRole("ADMIN")
+                //     .antMatchers("/css/**","/js/**").permitAll()
+          //      .antMatchers("/").permitAll()
+                .antMatchers("/staff-request/","/staff-request/**","/staff-status","/staff-filter-request").hasRole("STAFF")
+                .antMatchers("/admin","/admin/**","/admin-request","/admin-status","/admin-account","/filter-staff","/filter-request","/filter-request-from-whom").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -52,18 +59,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll()
                 .logoutSuccessUrl("/");
+
     }
+
+//    @Autowired
+//    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+//    }
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
     }
 
 
     /* Разрешаем Spring Security допускать следующие директории */
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**","/img/**","/scripts/**");
+        web.ignoring().antMatchers("/css/**","/js/**");
 
     }
 }

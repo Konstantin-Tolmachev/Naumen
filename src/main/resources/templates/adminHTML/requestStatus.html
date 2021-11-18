@@ -13,10 +13,10 @@
 
 <section class="sectionRequest">
     <div class="newRequest1">
-        <h1>Список заявок</h1>
+        <h1>Список ответов на поданные заявки</h1>
         <div class="DivRequest">
             <form method="post" th:action="filter-request-from-whom">
-                <input  class="inn"  list="characterFilterRequest" name="fromWhom" placeholder="Должность" />
+                <input  class="inn"  list="characterFilterRequest" name="fromWhom" id="fromWhom" placeholder="Должность" />
                 <datalist id="characterFilterRequest" >
 
                     <option th:each="position : ${positions}"
@@ -26,7 +26,7 @@
                 </datalist>
 
 
-                <input  type="hidden" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />
+                <input  type="hidden" id="statusFilter"   name="filter" placeholder="Поиск по статусу заявки" />
                 <select class="inn" onchange="document.getElementById('statusFilter').value=this.value">
                     <option value="" disabled selected hidden>Статус заявки</option>
                     <option value="Выполнено">Выполнено</option>

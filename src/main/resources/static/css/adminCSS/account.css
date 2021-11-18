@@ -146,6 +146,8 @@ input#username, #password, #roles{
     width: 100%;
     height: 40px;
     font-size: 1.3rem;
+    line-height: 100%;
+    text-indent: 2%;
 }
 .error {
 
@@ -166,7 +168,26 @@ input#username, #password, #roles{
     padding-bottom: 1%;
 }
 
-.btnAddAccount{
+/*.btnAddAccount{*/
+/*    padding-left: 3%;*/
+/*    padding-right: 3%;*/
+/*    padding-top: 1%;*/
+/*    padding-bottom: 1%;*/
+/*    font-size: .9rem;*/
+/*    cursor: pointer;*/
+/*    background: white;*/
+/*    color: green;*/
+/*}*/
+
+/*.btnAddAccount:hover{*/
+/*    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;*/
+/*    color: black;*/
+/*    opacity: 1;*/
+/*    cursor: pointer;*/
+/*}*/
+
+
+.btnAddAccount {
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 1%;
@@ -176,8 +197,10 @@ input#username, #password, #roles{
     background: white;
     color: green;
 }
-
-.btnAddAccount:hover{
+.btnAddAccount[disabled]:hover {
+    cursor: default;
+}
+.btnAddAccount:hover:not([disabled])  {
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
     opacity: 1;
@@ -312,7 +335,7 @@ input#username, #password, #roles{
     cursor: pointer;
     color: black;
 
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     transition: all .2s ease-in-out;
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }
@@ -340,7 +363,7 @@ input#username, #password, #roles{
     opacity: 1;
     cursor: pointer;
     color: black;
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     transition: all .2s ease-in-out;
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }

@@ -28,25 +28,31 @@
 
                     <form  method="post">
                         <div  th:each="el : ${post}" class="c1">
-
-                            <div class="staffReq"><input type="text"  th:value="${el.fname}" onkeyup="checkParams()" id="fname" name="fname" placeholder="Фамилия"></div>
-                            <div class="staffReq"><input type="text"  th:value="${el.lname}" onkeyup="checkParams()" id="lname" name="lname" placeholder="Имя"></div>
-                            <div class="staffReq"><input type="text"  th:value="${el.pname}" onkeyup="checkParams()" id="pname" name="pname" placeholder="Отчество"></div>
-                            <div class="staffReq"><input type="text"  th:value="${el.position}" onkeeyup="checkParams()" id="position" name="position" placeholder="Должность"></div>
-
-
+                            <div class="staffReq"><input type="text"  th:value="${el.lname}"    onkeyup="checkParamsUpdateStaffInAdmin()" id="lname" name="lname" placeholder="Имя"></div>
+                            <div class="staffReq"><input type="text"  th:value="${el.fname}"    onkeyup="checkParamsUpdateStaffInAdmin()" id="fname" name="fname" placeholder="Фамилия"></div>
+                            <div class="staffReq"><input type="text"  th:value="${el.pname}"    onkeyup="checkParamsUpdateStaffInAdmin()" id="pname" name="pname" placeholder="Отчество"></div>
+                            <div class="staffReq"><input type="text"  th:value="${el.position}" onkeyup="checkParamsUpdateStaffInAdmin()" id="position" name="position" placeholder="Должность" list="positionStaff"></div>
+                            <datalist id="positionStaff" >
+                                <option th:each="staff : ${positions}"
+                                        th:value="${staff}"
+                                        th:text="${staff}">
+                                </option>
+                            </datalist>
                         </div>
                         <form class="wrap" th:action="@{/AllStaff}" method="post" >
-                            <!--   <input type="submit"  id="submit" class="btnDelete" value="Обновить"  > -->
-                            <button class="btnUpdate" type="submit">Обновить</button>
+                            <button class="btnUpdateStaff" type="submit" id="btnUpdateStaff" disabled>Обновить</button>
                         </form>
                     </form>
+                    <button class="btnBack" onclick="document.location='/admin'">Назад</button>
                 </div>
             </div>
 
         </div>
     </div>
 </section>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="/js/request.js"></script>
 
 </body>
 

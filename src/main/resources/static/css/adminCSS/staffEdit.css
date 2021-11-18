@@ -54,7 +54,7 @@ body {
 }
 
 .position{
-    margin-left: 10%;
+    margin-left: 3%;
     display: inline;
     font-size: 1.5rem;
 }
@@ -103,29 +103,29 @@ body {
 
 .c1{
     column-count: 4;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 
 }
 
 input#fname, #lname, #pname, #position{
     width: 100%;
-    height: 30px;
-    font-size: 1.1rem;
-    margin-bottom: 1%;
+    height: 40px;
+    font-size: 1.3rem;
+    line-height: 100%;
+    text-indent: 3%;
 }
 
 .staffReq{
     text-align: center;
-    display: table;
+    /*display: table;*/
     margin:  auto;
-    padding-bottom: 3%;
     font-size: 1.1rem;
 }
 .staffReq1{
     text-align: center;
     display: table;
     margin:  auto;
-    padding-bottom: 3%;
+
     font-size: 1.1rem;
     font-weight: bold;
 }
@@ -133,11 +133,7 @@ input#fname, #lname, #pname, #position{
 
 
 
-
-.btnUpdate{
-    margin-left: 3%;
-    margin-top: 1%;
-    margin-bottom: 2%;
+.btnUpdateStaff {
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 1%;
@@ -147,13 +143,35 @@ input#fname, #lname, #pname, #position{
     background: white;
     color: green;
 }
-
-.btnUpdate:hover{
+.btnUpdateStaff[disabled]:hover {
+    cursor: default;
+}
+.btnUpdateStaff:hover:not([disabled])  {
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
     opacity: 1;
     cursor: pointer;
 }
+/*.btnUpdate{*/
+/*    margin-left: 3%;*/
+/*    margin-top: 1%;*/
+/*    margin-bottom: 2%;*/
+/*    padding-left: 3%;*/
+/*    padding-right: 3%;*/
+/*    padding-top: 1%;*/
+/*    padding-bottom: 1%;*/
+/*    font-size: .9rem;*/
+/*    cursor: pointer;*/
+/*    background: white;*/
+/*    color: green;*/
+/*}*/
+
+/*.btnUpdate:hover{*/
+/*    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;*/
+/*    color: black;*/
+/*    opacity: 1;*/
+/*    cursor: pointer;*/
+/*}*/
 
 .btnAuth {
     border: none;
@@ -169,6 +187,26 @@ input#fname, #lname, #pname, #position{
     box-shadow: 0 0 0 0 white inset, 0 0 10px 1px green;
     border-radius: .3rem;
     color: #dddddd;
+}
+
+
+.btnBack{
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top: 1%;
+    font-size: .9rem;
+    cursor: pointer;
+    background: white;
+    color: green;
+}
+
+.btnBack:hover{
+    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
+    color: black;
+    opacity: 1;
+    cursor: pointer;
 }
 
 

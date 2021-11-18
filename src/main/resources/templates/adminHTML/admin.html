@@ -48,7 +48,7 @@
 
         <div class="DivRequest" >
             <form method="post" th:action="filter-staff">
-                <input  class="inn" list="characterFilter" name="filter" placeholder="Поиск" />
+                <input  class="inn" list="characterFilter" id="positionFilter" name="filter" placeholder="Поиск" />
                 <datalist id="characterFilter" >
 
                     <option th:each="position : ${positions}"

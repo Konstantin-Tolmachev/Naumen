@@ -23,7 +23,7 @@
         <div th:each="el : ${post}" class="allDivRequest">
 
             <div class="DivRequest">
-                <input class="inn" type="text" th:value="${el.room}" onkeyup="checkParamsEdit()" id="roomEdit" name="room" placeholder="№ кабинета">
+                <input class="inn" type="text" th:value="${el.room}" id="roomEdit" name="room" placeholder="№ кабинета">
             </div>
 
             <div class="DivRequest">
@@ -59,7 +59,7 @@
 
             <div class="DivRequest">
                 <input  type="hidden" class="inn" th:value="${el.status}" onkeyup="checkParamsEdit()" name="status" placeholder="Статус" id="statusEdit" />
-                <select class="inn" onchange="document.getElementById('statusEdit').value=this.value">
+                <select class="inn" id="statusEditS" onchange="document.getElementById('statusEdit').value=this.value">
                     <option value="" disabled selected hidden>Статус заявки</option>
                     <option value="Выполнено">Выполнено</option>
                     <option value="На выполнении">На выполнении</option>
@@ -68,7 +68,7 @@
             </div>
 
             <div class="DivRequest">
-                    <input  list="characterName" class="inn" th:value="${el.name}" name="name" id="name" placeholder="ФИО">
+                    <input  list="characterName" class="inn" th:value="${el.name}" name="name" id="nameEdit" placeholder="ФИО">
                     <datalist id="characterName" >
                     <option
                             th:each="staff : ${staffs}"
@@ -84,11 +84,11 @@
                 <textarea  class="size" name="text" onkeyup="checkParamsEdit()" id="textEdit" placeholder="Описание проблемы" th:text="${el.text}"></textarea>
             </div>
             <div class="DivRequest">
-                <textarea  class="size" name="comment" onkeyup="checkParamsEdit()" id="textComment" placeholder="Оставить комментарий" th:text="${el.comment}"></textarea>
+                <textarea  class="size" name="comment"  id="textCommentEdit" placeholder="Оставить комментарий" th:text="${el.comment}"></textarea>
             </div>
 
             <form th:action="@{/admin-request}" method="post" >
-                <input type="submit"  id="submitEdit" class="btnComment1"  value="Ответить"  >
+                <input type="submit"  id="submitEdit" class="btnEditRequest" disabled value="Ответить"  >
             </form>
 
         </div>

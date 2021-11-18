@@ -195,9 +195,27 @@ body {
     font-size: 1.3rem;
 }
 
+.btnAddRequest {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: .9rem;
+    cursor: pointer;
+    background: white;
+    color: green;
+}
+.btnAddRequest[disabled]:hover {
+    cursor: default;
+}
+.btnAddRequest:hover:not([disabled])  {
+    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
+    color: black;
+    opacity: 1;
+    cursor: pointer;
+}
 
-
-.btnComment{
+.btnSearchFilter{
     margin-bottom: 2%;
     padding-left: 3%;
     padding-right: 3%;
@@ -209,28 +227,49 @@ body {
     color: green;
 }
 
-.btnComment:hover{
+.btnSearchFilter:hover{
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
     opacity: 1;
     cursor: pointer;
 }
 
-.btnComment1{
-    /*margin-left: 2%;*/
-    margin-top: 1%;
-    margin-bottom: 1%;
+/*.btnComment1{*/
+/*    !*margin-left: 2%;*!*/
+/*    margin-top: 1%;*/
+/*    margin-bottom: 1%;*/
+/*    padding-left: 3%;*/
+/*    padding-right: 3%;*/
+/*    padding-top: 1%;*/
+/*    padding-bottom: 1%;*/
+/*    font-size: .9rem;*/
+/*    cursor: pointer;*/
+/*    background: white;*/
+/*    color: green;*/
+/*}*/
+
+/*.btnComment1:hover{*/
+/*    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;*/
+/*    color: black;*/
+/*    opacity: 1;*/
+/*    cursor: pointer;*/
+/*}*/
+
+.btnEditRequest {
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 1%;
     padding-bottom: 1%;
+    margin-top: 1%;
     font-size: .9rem;
     cursor: pointer;
     background: white;
     color: green;
 }
-
-.btnComment1:hover{
+.btnEditRequest[disabled]:hover {
+    cursor: default;
+}
+.btnEditRequest:hover:not([disabled])  {
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
     opacity: 1;
@@ -243,6 +282,7 @@ body {
     padding-right: 3%;
     padding-top: 1%;
     padding-bottom: 1%;
+    margin-top: 1%;
     font-size: .9rem;
     cursor: pointer;
     background: white;
@@ -327,8 +367,24 @@ body {
 }
 
 .wrap2{
+    padding-bottom:1%;
     margin:  auto;
     font-size: 1.1rem;
+}
+
+input#room, #level, #fromWhom, #toWhom, #toWhomFilter, #statusFilter,
+     #roomEdit, #levelEdit, #fromWhomEdit, #toWhomEdit, #statusEdit, #statusEditS, #nameEdit{
+    font-size: 1.3rem;
+    line-height: 100%;
+    text-indent: 2%;
+}
+
+
+textarea#text,
+        #textEdit,#textCommentEdit{
+    font-size: 1.3rem;
+    line-height: 150%;
+    text-indent: 1%;
 }
 
 .delete{
@@ -372,7 +428,7 @@ body {
     opacity: 1;
     cursor: pointer;
     color: black;
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     transition: all .2s ease-in-out;
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }
@@ -399,7 +455,7 @@ body {
     opacity: 1;
     cursor: pointer;
     color: black;
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     transition: all .2s ease-in-out;
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }

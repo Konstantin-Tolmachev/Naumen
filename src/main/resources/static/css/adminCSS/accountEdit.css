@@ -112,6 +112,8 @@ input#fname, #lname, #pname, #position{
     height: 30px;
     font-size: 1.1rem;
     margin-bottom: 1%;
+    line-height: 100%;
+    text-indent: 3%;
 }
 
 .staffReq{

@@ -13,10 +13,10 @@
 
 <section class="sectionRequest">
     <div class="newRequest1">
-        <h1>Список заявок</h1>
+        <h1>Список ответов на поданные заявки</h1>
         <div class="DivRequest">
             <form method="post" th:action="staff-filter-request-from-whom">
-                <input  class="inn" th:value="${#authentication.name}"  name="fromWhom" placeholder="Должность" />
+                <input type="hidden" class="inn" th:value="${#authentication.name}" id="fromWhom"  name="fromWhom" placeholder="Должность" />
 
 
                 <input  type="hidden" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />

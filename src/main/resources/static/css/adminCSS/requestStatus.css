@@ -195,6 +195,14 @@ body {
     font-size: 1.3rem;
 }
 
+input#fromWhom, #statusFilter{
+    height: 40px;
+    font-size: 1.3rem;
+    line-height: 100%;
+    text-indent: 2%;
+}
+
+
 
 
 .btnComment{
@@ -374,7 +382,7 @@ body {
     opacity: 1;
     cursor: pointer;
     color: black;
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     transition: all .2s ease-in-out;
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }
@@ -401,7 +409,7 @@ body {
     opacity: 1;
     cursor: pointer;
     color: black;
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     transition: all .2s ease-in-out;
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }

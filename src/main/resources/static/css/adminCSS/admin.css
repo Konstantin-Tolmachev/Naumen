@@ -94,6 +94,15 @@ input#addLname, #addFname, #addPname, #addPosition{
     width: 100%;
     height: 40px;
     font-size: 1.3rem;
+    line-height: 100%;
+    text-indent: 3%;
+}
+
+input#positionFilter{
+    height: 40px;
+    font-size: 1.3rem;
+    line-height: 100%;
+    text-indent: 3%;
 }
 
 .staffsName{
@@ -107,7 +116,7 @@ input#addLname, #addFname, #addPname, #addPosition{
     padding-bottom: 1%;
 }
 
-.btnStaff{
+.btnStaff {
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 1%;
@@ -117,17 +126,15 @@ input#addLname, #addFname, #addPname, #addPosition{
     background: white;
     color: green;
 }
-
-.btnStaff:hover{
+.btnStaff[disabled]:hover {
+    cursor: default;
+}
+.btnStaff:hover:not([disabled])  {
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
     opacity: 1;
     cursor: pointer;
 }
-
-
-
-
 
 .footer{
     left: 0;
@@ -259,7 +266,7 @@ input#addLname, #addFname, #addPname, #addPosition{
     cursor: pointer;
     color: black;
 
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     transition: all .2s ease-in-out;
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }
@@ -287,7 +294,7 @@ input#addLname, #addFname, #addPname, #addPosition{
     opacity: 1;
     cursor: pointer;
     color: black;
-    border: 1px solid transparent;
+    /*border: 1px solid transparent;*/
     transition: all .2s ease-in-out;
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }

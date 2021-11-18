@@ -1,13 +1,20 @@
-const $fname = document.querySelector('[name=fname]');
-const $lname = document.querySelector('[name=lname]');
-const $pname = document.querySelector('[name=pname]');
+// const $fname = document.querySelector('[name=fname]');
+// const $lname = document.querySelector('[name=lname]');
+// const $pname = document.querySelector('[name=pname]');
+//
+// document.querySelector('select').addEventListener(`change`, e => {
+//     const $option = e.target.options[e.target.selectedIndex];
+//     $fname.value = $option.dataset.fname;
+//     $lname.value = $option.dataset.lname;
+//     $pname.value = $option.dataset.pname;
+// });
 
-document.querySelector('select').addEventListener(`change`, e => {
-    const $option = e.target.options[e.target.selectedIndex];
-    $fname.value = $option.dataset.fname;
-    $lname.value = $option.dataset.lname;
-    $pname.value = $option.dataset.pname;
-});
+
+
+
+
+
+
 
 /* Кнопка доступна, если все поля заполнены в форме для написания заявки request.html*/
 function checkParams() {
@@ -40,18 +47,17 @@ function checkParams() {
 
 /* Кнопка доступна, если все поля ответа на заявку заполнены requestEdit.html */
 function checkParamsEdit () {
-    var roomEdit = $('#roomEdit').val();
+    // var roomEdit = $('#roomEdit').val();
     var levelEdit = $('#levelEdit').val();
     var fromWhomEdit = $('#fromWhomEdit').val();
     var toWhomEdit = $('#toWhomEdit').val();
     var statusEdit = $('#statusEdit').val();
-    var fnameEdit = $('#fnameEdit').val();
-    var pnameEdit = $('#pnameEdit').val();
-    var lnameEdit = $('#lnameEdit').val();
+    var nameEdit = $('#nameEdit').val();
     var textEdit = $('#textEdit').val();
+    // var textCommentEdit = $('#textCommentEdit').val();
 
-    if(roomEdit.length !== 0 && levelEdit.length !== 0 && fromWhomEdit.length !== 0 && toWhomEdit.length !== 0 && statusEdit.length !== 0  &&
-        fnameEdit.length !== 0 && pnameEdit.length !== 0 && lnameEdit.length !== 0 && textEdit.length !== 0) {
+    if(levelEdit.length !== 0 && fromWhomEdit.length !== 0 && toWhomEdit.length !== 0 && statusEdit.length !== 0  &&
+        nameEdit.length !== 0 && textEdit.length !== 0) {
 
         $('#submitEdit').removeAttr('disabled');
     } else {
@@ -74,9 +80,24 @@ function checkParamsAddNewStaff() {
     }
 }
 
+/* Кнопка доступна, если все поля заполнены в форме редактирования сотрудника staffEdit.html*/
+function checkParamsUpdateStaffInAdmin() {
+    var lname = $('#lname').val();
+    var fname = $('#fname').val();
+    var pname = $('#pname').val();
+    var position = $('#position').val();
+
+    if(lname.length !== 0 && fname.length !== 0 && fname.length !== 0 && position.length !== 0  ) {
+
+        $('#btnUpdateStaff').removeAttr('disabled');
+    } else {
+        $('#btnUpdateStaff').attr('disabled', 'disabled');
+    }
+}
 
 
-/* Кнопка доступна, если все поля заполнены в форме для добавления новой должности position.html*/
+
+/* Кнопка доступна, если все поля заполнены в форме для добавления новой должности account.html*/
 function checkParamsAddAccount() {
 
     var username = $('#username').val();
@@ -120,5 +141,18 @@ function validator(evt) {
         theEvent.returnValue = false;
         if(theEvent.preventDefault) theEvent.preventDefault();
     }
+}
+
+
+function show_hide_password(target){
+    var input = document.getElementById('password-input');
+    if (input.getAttribute('type') == 'password') {
+        target.classList.add('view');
+        input.setAttribute('type', 'text');
+    } else {
+        target.classList.remove('view');
+        input.setAttribute('type', 'password');
+    }
+    return false;
 }
 

@@ -5,15 +5,18 @@ import com.practikum.naumen.repo.*;
 import com.practikum.naumen.service.UserService;
 import com.practikum.naumen.service.UserValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 
@@ -64,6 +67,8 @@ public class AdminController {
         if(!staffRepository.existsById (id)){
             return "redirect:/admin";
         }
+        Collection<Staff> staffs = staffRepository.findAllByOrderByIdDesc();
+        model.addAttribute("positions", extractPositions(staffs));
         Optional<Staff> post = staffRepository.findById(id);
         ArrayList<Staff> res = new ArrayList<>();
         post.ifPresent(res::add);
@@ -241,13 +246,10 @@ public class AdminController {
     /*----------- Вывод доступный ролей, имеющихся аккаунтов -----------*/
 
     @GetMapping("/admin-account")
-    public String adminAccount( Model model) {
-        Iterable<Role> roles = roleRepository.findAll();
-        Iterable<Account> accounts = accountRepository.findAll();
+    public String adminAccount(Model model) {
         model.addAttribute("listRoles", roleRepository.findAll());
         model.addAttribute("userForm", new Account());
-        model.addAttribute("roles", roles);
-        model.addAttribute("accounts", accounts);
+        model.addAttribute("allUsers", userService.allAccounts());
         model.addAttribute("title", "Аккаунты");
         return "adminHTML/account";
     }
@@ -309,5 +311,34 @@ public class AdminController {
         return "adminHTML/requestStatus";
     }
 
+
+//    @ExceptionHandler(AccessDeniedException.class)
+//    public void handleError(HttpServletResponse response) throws IOException {
+//        response.sendRedirect("/registration");
+//    }
+
+
+
+
+    @GetMapping("/registration")
+    public String Registration(Model model) {
+        model.addAttribute("userForm", new Account());
+        return "homeHTML/registration";
+    }
+
+
+    @PostMapping("/registration")
+    public String addAccounte(@ModelAttribute("userForm") @Valid Account userForm, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            return "homeHTML/registration";
+        }
+        if (!userService.saveUser(userForm)){
+            model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
+            return "homeHTML/registration";
+        }
+
+        return "redirect:/";
+    }
 
 }
