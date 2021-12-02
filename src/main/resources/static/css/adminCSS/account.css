@@ -150,11 +150,10 @@ input#username, #password, #roles{
     text-indent: 2%;
 }
 .error {
-
     color: red;
     font-size: 0.8rem;
     margin-bottom: 1%;
-    /*margin-top: 1%;*/
+
 }
 
 .staffsName{

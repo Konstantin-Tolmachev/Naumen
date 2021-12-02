@@ -15,7 +15,8 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     List<Request> findAllByStatusOrderByIdDesc(String filter);
 
     List<Request> findAllByToWhomOrderByIdDesc(String toWhom);
-    List<Request> findAllByFromWhomOrderByIdDesc(String toWhom);
+    List<Request> findAllByFromWhomOrderByIdDesc(String fromWhom); // Не правильное название БЫЛО toWhom
+
 
 
     List<Request> findAllByRoomOrderByIdDesc(String room);

@@ -20,10 +20,10 @@
               method="post" class="form">
             <div class="allDivRequest">
 
+
+
                 <div class="DivRequest" >
-
                    <input class="inn"  onkeypress='validator(event)' id="room" type="text"  name="room" maxlength="10"   placeholder="№ кабинета*">
-
                 </div>
 
 
@@ -101,7 +101,8 @@
             </form>
         </div>
 
-        <div th:each="el : ${requests}" class="request">
+    <div th:each="el : ${requests}" class="request">
+
             <h4>Заказчик:</h4>
             <div class="allDiv">
                 <div class="c1">
@@ -111,8 +112,7 @@
                     <div class="staffReq">Заказчик</div>
                 </div>
                 <div class="c1">
-                    <div th:text="${el.createDate}" class="staffReq"><input type="text" id="createDate"
-                                                                            name="createDate"></div>
+                    <div th:text="${el.createDate}" class="staffReq"><input type="text" id="createDate"name="createDate"></div>
                     <div th:text="${el.level}" class="staffReq"><input type="text" id="Rlevel" name="level"></div>
                     <div th:text="${el.room}" class="staffReq"><input type="text" id="Rroom" name="room"></div>
                     <div th:text="${el.fromWhom}" class="staffReq"><input type="text" id="RfromWhom" name="fromWhom">
@@ -130,7 +130,6 @@
                     <div class="staffReq">ФИО</div>
                     <div class="staffReq">Дата выполнения</div>
                 </div>
-
 
                 <div class="c3">
                     <div th:text="${el.toWhom}" class="staffReq"><input type="text" id="RtoWhom" name="toWhom"></div>
@@ -151,8 +150,9 @@
                         <button class="btnDelete" type="submit">Удалить</button>
                     </form>
                 </div>
-            </div>
-        </div>
+              </div>
+           </div>
+<!--        </div>-->
     </div>
 </section>
 

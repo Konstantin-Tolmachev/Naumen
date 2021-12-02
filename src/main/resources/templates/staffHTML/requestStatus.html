@@ -16,8 +16,14 @@
         <h1>Список ответов на поданные заявки</h1>
         <div class="DivRequest">
             <form method="post" th:action="staff-filter-request-from-whom">
-                <input type="hidden" class="inn" th:value="${#authentication.name}" id="fromWhom"  name="fromWhom" placeholder="Должность" />
+                <input class="inn" list="characterFilterRequest"  id="toWhom"  name="toWhom" placeholder="Должность исполнителя" />
+                <datalist id="characterFilterRequest" >
 
+                    <option th:each="position : ${positions}"
+                            th:value="${position}"
+                            th:text="${position}">
+                    </option>
+                </datalist>
 
                 <input  type="hidden" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />
                 <select class="inn" onchange="document.getElementById('statusFilter').value=this.value">
@@ -32,33 +38,38 @@
             </form>
         </div>
 
-        <div th:each="el : ${requests}" class="request">
-<div class="inline">
-    <div class="nameRequest">
-        <h4>Исполнитель:</h4>
-        <p class="p" th:text="${el.toWhom}"></p>
-    </div>
+            <div th:if="${#authentication.name == el.fromWhom}" th:each="el : ${requests}" class="request">
+                <div class="inline">
 
-    <div class="nameRequest">
-        <h4>Статус:</h4>
-        <p class="p" th:text="${el.status}"></p>
-    </div>
+                    <div class="nameRequest">
+                        <h4>Заказчик:</h4>
+                        <p class="p" th:text="${el.fromWhom}"></p>
+                    </div>
 
-    <div class="nameRequest">
-        <h4>Именование заявки:</h4>
-        <label>
-            <p class="p" th:text="${el.text}"></p>
-        </label>
-    </div>
+                    <div class="nameRequest">
+                        <h4>Исполнитель:</h4>
+                        <p class="p" th:text="${el.toWhom}"></p>
+                    </div>
 
-    <div class="nameRequest">
-        <h4>Комментарий:</h4>
-        <label>
-            <p class="p" th:text="${el.comment}"></p>
-        </label>
-    </div>
-</div>
+                <div class="nameRequest">
+                    <h4>Статус:</h4>
+                    <p class="p" th:text="${el.status}"></p>
+                </div>
 
+                <div class="nameRequest">
+                    <h4>Именование заявки:</h4>
+                    <label>
+                        <p class="p" th:text="${el.text}"></p>
+                    </label>
+                </div>
+
+                <div class="nameRequest">
+                    <h4>Комментарий:</h4>
+                    <label>
+                        <p class="p" th:text="${el.comment}"></p>
+                    </label>
+                </div>
+            </div>
         </div>
     </div>
 </section>

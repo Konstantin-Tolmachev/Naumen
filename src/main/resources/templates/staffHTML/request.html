@@ -75,7 +75,7 @@
             <form method="post" th:action="staff-filter-request">
                 <input type="hidden" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />
                 <input type="hidden" th:value="${#authentication.name}"  id="toWhomFilter" name="toWhom" placeholder="toWhom" />
-                <select class="inn" required
+                <select class="inn"
                         onchange="document.getElementById('statusFilter').value=this.value;">
                     <option value="" disabled selected hidden>Статус заявки</option>
                     <option value="Выполнено">Выполнено</option>
@@ -89,7 +89,8 @@
             </form>
         </div>
 
-        <div th:each="el : ${requests}" class="request">
+<!--        <div th:each="el : ${requests}" class="request">-->
+            <div th:if="${#authentication.name == el.toWhom}" th:each="el : ${requests}"  class="request">
 
             <h4>Заказчик:</h4>
             <div class="allDiv">

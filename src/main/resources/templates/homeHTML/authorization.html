@@ -18,6 +18,7 @@
     <h1>Авторизация</h1>
     <form th:action="@{/}" th:authentication-success-handler-ref="authSuccessHandler" method="post">
         <div>
+
             <div class="input">
                 <input type="text" onkeyup="checkParams()" id="username-input" name="username" placeholder="Логин">
             </div>
@@ -25,6 +26,12 @@
             <div class="input">
                 <input type="password" id="password-input" placeholder="Пароль" name="password">
                 <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+            </div>
+
+            <div th:if="${param.error}">
+                <div class="error">
+                    Логин или пароль введен неправильно!
+                </div>
             </div>
 
         </div>

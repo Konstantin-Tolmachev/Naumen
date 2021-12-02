@@ -22,11 +22,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
+    /* Шифрование пароля при создании учетной записи */
 //    @Bean
 //    public BCryptPasswordEncoder bCryptPasswordEncoder() {
 //        return new BCryptPasswordEncoder();
 //    }
 
+    /* Пароль при создании учетной записи НЕ шифруется */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
@@ -59,8 +61,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .permitAll()
                 .logoutSuccessUrl("/");
-
     }
+
+    /* Шифрование пароля при создании учетной записи */
 
 //    @Autowired
 //    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

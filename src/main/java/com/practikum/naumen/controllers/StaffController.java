@@ -139,16 +139,16 @@ public class StaffController {
     /*-----------Фильтр по заявкам, поиск по статусу и должности завителя-----------*/
 
     @PostMapping("staff-filter-request-from-whom")
-    public String AllRequestAdminFilterFromWhom (@RequestParam String filter, @RequestParam String fromWhom, Model model) {
+    public String AllRequestAdminFilterFromWhom (@RequestParam String filter, @RequestParam String toWhom, Model model) {
         Iterable<Request> requests;
         Collection<Staff> staffs = staffRepository.findAll();
 
-        if (filter !=null && !filter.isEmpty() && fromWhom !=null && !fromWhom.isEmpty()){
-            requests = requestRepository.findAllByStatusAndFromWhom(filter, fromWhom);
+        if (filter !=null && !filter.isEmpty() && toWhom !=null && !toWhom.isEmpty()){
+            requests = requestRepository.findAllByStatusAndToWhom(filter, toWhom);
         } else if (filter !=null && !filter.isEmpty()){
             requests = requestRepository.findAllByStatusOrderByIdDesc(filter);
-        }else if (fromWhom !=null && !fromWhom.isEmpty()) {
-            requests = requestRepository.findAllByFromWhomOrderByIdDesc(fromWhom);
+        }else if (toWhom !=null && !toWhom.isEmpty()) {
+            requests = requestRepository.findAllByToWhomOrderByIdDesc(toWhom);
         }else {
             requests = requestRepository.findAllByOrderByIdDesc();
         }

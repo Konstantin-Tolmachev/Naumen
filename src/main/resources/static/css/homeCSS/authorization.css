@@ -21,24 +21,20 @@ h1{
     color: black;
 }
 
-/*.input {*/
-/*    padding: 10px;*/
-/*}*/
-
-/*input#username,#password{*/
-/*    width: 85%;*/
-/*    height: 40px;*/
-/*    font-size: 1.3rem;*/
-/*}*/
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: -3%;
+}
 
 .input {
     width: 85%;
-    margin: 15px auto;
+    margin: 1% auto;
     position: relative;
 }
 #password-input, #username-input {
     width: 100%;
-    padding: 5px 0;
+    padding: 5px;
     height: 30px;
     line-height: 40px;
     text-indent: 10px;
@@ -60,37 +56,13 @@ h1{
     background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
 }
 
-/*.password {*/
-/*    padding: 10px;*/
-/*    position: relative;*/
-/*}*/
-/*#password-input {*/
-/*    width: 85%;*/
-/*    padding: 5px 0;*/
-/*    height: 40px;*/
-/*    !*line-height: 40px;*!*/
-/*    !*text-indent: 10px;*!*/
-/*    margin: 0 0 15px 0;*/
-/*    font-size: 1.3rem;*/
-/*}*/
-/*.password-control {*/
-/*    position: absolute;*/
-/*    top: 27px;*/
-/*    right: 80px;*/
-/*    width: 20px;*/
-/*    height: 20px;*/
-/*    background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;*/
-/*}*/
-/*.password-control.view {*/
-/*    background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;*/
-/*}*/
-
 .buttonAuth{
     height: 40px;
     padding-left: 3%;
     padding-right: 3%;
     padding-top: 1%;
     padding-bottom: 1%;
+    margin-top: 2%;
     font-size: 1rem;
     cursor: pointer;
     background: white;

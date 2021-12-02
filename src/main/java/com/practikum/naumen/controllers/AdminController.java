@@ -298,14 +298,15 @@ public class AdminController {
 
         if (filter !=null && !filter.isEmpty() && fromWhom !=null && !fromWhom.isEmpty()){
             requests = requestRepository.findAllByStatusAndFromWhom(filter, fromWhom);
+
         } else if (filter !=null && !filter.isEmpty()){
             requests = requestRepository.findAllByStatusOrderByIdDesc(filter);
+
         }else if (fromWhom !=null && !fromWhom.isEmpty()) {
             requests = requestRepository.findAllByFromWhomOrderByIdDesc(fromWhom);
         }else {
             requests = requestRepository.findAllByOrderByIdDesc();
         }
-//        model.addAttribute("positions", extractPositions(staffs));
         model.addAttribute("staffs", staffs);
         model.addAttribute("requests", requests);
         return "adminHTML/requestStatus";

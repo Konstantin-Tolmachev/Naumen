@@ -16,7 +16,7 @@
         <h1>Список ответов на поданные заявки</h1>
         <div class="DivRequest">
             <form method="post" th:action="filter-request-from-whom">
-                <input  class="inn"  list="characterFilterRequest" name="fromWhom" id="fromWhom" placeholder="Должность" />
+                <input  class="inn"  list="characterFilterRequest" name="fromWhom" id="fromWhom" placeholder="Должность заказчика" />
                 <datalist id="characterFilterRequest" >
 
                     <option th:each="position : ${positions}"
@@ -41,6 +41,11 @@
 
         <div th:each="el : ${requests}" class="request">
 <div class="inline">
+    <div class="nameRequest">
+        <h4>Заказчик:</h4>
+        <p class="p" th:text="${el.fromWhom}"></p>
+    </div>
+
     <div class="nameRequest">
         <h4>Исполнитель:</h4>
         <p class="p" th:text="${el.toWhom}"></p>
