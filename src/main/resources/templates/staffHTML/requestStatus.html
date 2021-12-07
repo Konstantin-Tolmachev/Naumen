@@ -18,20 +18,21 @@
             <form method="post" th:action="staff-filter-request-from-whom">
                 <input class="inn" list="characterFilterRequest"  id="toWhom"  name="toWhom" placeholder="Должность исполнителя" />
                 <datalist id="characterFilterRequest" >
-
                     <option th:each="position : ${positions}"
                             th:value="${position}"
                             th:text="${position}">
                     </option>
                 </datalist>
 
-                <input  type="hidden" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />
-                <select class="inn" onchange="document.getElementById('statusFilter').value=this.value">
-                    <option value="" disabled selected hidden>Статус заявки</option>
-                    <option value="Выполнено">Выполнено</option>
-                    <option value="На выполнении">На выполнении</option>
-                    <option value="Не выполнено">Не выполнено</option>
-                </select>
+
+                <input  list="statusR" class="inn"
+                        onkeyup="checkParamsEdit()" name="filter" placeholder="Статус заявки" id="statusFilter" />
+
+                <datalist id="statusR">
+                    <option value="Выполнено">
+                    <option value="На выполнении">
+                    <option value="Не выполнено">
+                </datalist>
                 <div class="DivRequest1">
                     <button class="btnComment" id="submitFilter" type="submit">Найти</button>
                 </div>

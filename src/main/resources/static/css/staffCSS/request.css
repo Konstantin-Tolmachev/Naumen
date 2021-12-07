@@ -131,7 +131,8 @@ body {
     margin-bottom: 3%;
     border-radius: 5px;
     background-color: white;
-    height: 900px;
+    min-height: 200px;
+    max-height: 900px;
     overflow: scroll;
     overflow-x: hidden;
 }
@@ -186,12 +187,22 @@ body {
 }
 
 .inc{
-    color: gray;
+    color: #bdbbbb;
     width: 36%;
     height: 40px;
     font-size: 1.3rem;
 }
 
+.sizeText{
+    width: 72%;
+    height: 100px;
+    min-width: 72%;
+    min-height: 100px;
+    max-width: 98%;
+    max-height: 200px;
+    font-size: 1.3rem;
+    color: gray;
+}
 .size{
     width: 72%;
     height: 100px;
@@ -200,6 +211,17 @@ body {
     max-width: 98%;
     max-height: 200px;
     font-size: 1.3rem;
+}
+
+.sizeGray{
+    width: 72%;
+    height: 100px;
+    min-width: 72%;
+    min-height: 100px;
+    max-width: 98%;
+    max-height: 200px;
+    font-size: 1.3rem;
+    color: #bdbbbb;
 }
 
 input#room, #level, #fromWhom, #toWhom, #toWhomFilter, #statusFilter,

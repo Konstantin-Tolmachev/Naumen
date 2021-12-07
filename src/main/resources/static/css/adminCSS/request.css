@@ -184,6 +184,12 @@ body {
     height: 40px;
     font-size: 1.3rem;
 }
+/*.inc{*/
+/*    ccolor: #bdbbbb;*/
+/*    width: 36%;*/
+/*    height: 40px;*/
+/*    font-size: 1.3rem;*/
+/*}*/
 
 .size{
     width: 72%;
@@ -194,6 +200,17 @@ body {
     max-height: 200px;
     font-size: 1.3rem;
 }
+.sizeGray{
+    width: 72%;
+    height: 100px;
+    min-width: 72%;
+    min-height: 100px;
+    max-width: 98%;
+    max-height: 200px;
+    font-size: 1.3rem;
+    color: #bdbbbb;
+}
+
 
 .btnAddRequest {
     padding-left: 3%;
@@ -372,8 +389,16 @@ body {
     font-size: 1.1rem;
 }
 
-input#room, #level, #fromWhom, #toWhom, #toWhomFilter, #statusFilter,
-     #roomEdit, #levelEdit, #fromWhomEdit, #toWhomEdit, #statusEdit, #statusEditS, #nameEdit{
+input#room, #level, #fromWhom, #toWhom,
+     #roomEdit, #levelEdit, #fromWhomEdit, #toWhomEdit, #statusEdit, #statusReply, #statusEditS, #nameEdit, #nameReply{
+    font-size: 1.3rem;
+    line-height: 100%;
+    text-indent: 2%;
+}
+
+input#fromWhomFilter, #statusFilter, #toWhomFilter{
+    height: 40px;
+    width: 30%;
     font-size: 1.3rem;
     line-height: 100%;
     text-indent: 2%;
@@ -487,6 +512,12 @@ option {
     color: black;
 }
 
+.inc{
+    color: #bdbbbb;
+    width: 36%;
+    height: 40px;
+    font-size: 1.3rem;
+}
 
 .footer{
     left: 0;

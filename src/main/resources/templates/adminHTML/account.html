@@ -10,31 +10,6 @@
 </head>
 <body>
 
-
-
-<!--<section class="sectionRequest">-->
-<!--    <div class="Roles">-->
-<!--        <h1>Доступные роли</h1>-->
-<!--        <div class="DivRequest" >-->
-<!--        </div>-->
-
-<!--        <div class="c1">-->
-<!--            <div class="staffReq1">Id</div>-->
-<!--            <div class="staffReq1">Именование роли</div>-->
-<!--        </div>-->
-
-<!--        <div th:each="el : ${roles}"  class="request">-->
-<!--            <div class="allDiv">-->
-<!--                <div class="c1" >-->
-<!--                    <div th:text="${el.id}" class="staffReq"><input type="text" id="e" name="lname" ></div>-->
-<!--                    <div th:text="${el.name}" class="staffReq"><input type="text" id="f" name="fname" ></div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</section>-->
-
-
 <section class="addNewStaff">
     <h1 >Добавить аккаунт</h1>
 
@@ -53,9 +28,7 @@
                     <p th:if="${#fields.hasErrors('username')} "
                        th:class="${#fields.hasErrors('username')}? error">Минимальное значение 3 символа</p>
                     <p th:text="${usernameError}"  class="error"></p>
-
                 </div>
-
 
                 <div>
                     <input type="password" onkeyup="checkParamsAddAccount()" id="password" th:field="*{password}" placeholder="Пароль*">
@@ -63,8 +36,7 @@
                        th:class="${#fields.hasErrors('password')}? error">Минимальное значение 3 символа</p>
                 </div>
 
-
-                <input list="characterRoles"  th:field="*{roles}" onkeyup="checkParamsAddAccount()" id="roles"  placeholder="Права доступа*">
+                <input list="characterRoles"  th:field="*{roles}" onkeyup="checkParamsAddAccount()" id="roles" min="1" max="2" size="1"  placeholder="Права доступа*">
                 <datalist id="characterRoles" >
                     <option th:each="role : ${listRoles}"
                             th:text="${role.name}"
@@ -72,11 +44,8 @@
                     </option>
                 </datalist>
             </div>
-
-
         <button class="btnAddAccount" id="btnAddAccount" disabled type="submit">Добавить</button>
     </form>
-
 </section>
 
 <section class="allAccount">

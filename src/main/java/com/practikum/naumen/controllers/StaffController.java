@@ -29,7 +29,8 @@ public class StaffController {
 
     @GetMapping("/staff-request")
     public String staffRequest(Model model) {
-        Iterable<Request> requests = requestRepository.findAllByOrderByIdDesc();
+//        Iterable<Request> requests = requestRepository.findAllByOrderByIdDesc();
+        Collection<Request> requests = requestRepository.findAllByStatusWhere();
         model.addAttribute("requests", requests);
         Collection<Staff> staffs = staffRepository.findAllByOrderByIdDesc();
         model.addAttribute("positions", extractPositions(staffs));
@@ -53,7 +54,7 @@ public class StaffController {
                                   Model model) {
         Request request;
         if  (room == "") {
-            request = new Request (level, "-",fromWhom, text, toWhom,"Не выполнено","-", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")), "-", "-");
+            request = new Request (level, "Не указано",fromWhom, text, toWhom,"Не выполнено","-", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")), "-", "-");
         }
         else {
             request = new Request(level, room, fromWhom, text, toWhom, "Не выполнено","-", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")), "-", "-");
@@ -117,7 +118,7 @@ public class StaffController {
     public String staffRequestFilter (@RequestParam String filter, @RequestParam String toWhom, Model model) {
         Iterable<Request> requests;
         if (filter !=null && !filter.isEmpty()){
-            requests = requestRepository.findAllByStatusAndToWhom(filter, toWhom);
+            requests = requestRepository.findAllByStatusAndToWhomOrderByIdDesc(filter, toWhom);
         } else {
             return "redirect:/staff-request";
         }
@@ -137,14 +138,13 @@ public class StaffController {
     }
 
     /*-----------Фильтр по заявкам, поиск по статусу и должности завителя-----------*/
-
     @PostMapping("staff-filter-request-from-whom")
     public String AllRequestAdminFilterFromWhom (@RequestParam String filter, @RequestParam String toWhom, Model model) {
         Iterable<Request> requests;
         Collection<Staff> staffs = staffRepository.findAll();
 
         if (filter !=null && !filter.isEmpty() && toWhom !=null && !toWhom.isEmpty()){
-            requests = requestRepository.findAllByStatusAndToWhom(filter, toWhom);
+            requests = requestRepository.findAllByStatusAndToWhomOrderByIdDesc(filter, toWhom);
         } else if (filter !=null && !filter.isEmpty()){
             requests = requestRepository.findAllByStatusOrderByIdDesc(filter);
         }else if (toWhom !=null && !toWhom.isEmpty()) {

@@ -38,7 +38,7 @@
 
 
             <div class="DivRequest">
-                <input   class="inn" list="characterToWhom" th:value="${el.toWhom}" onkeyup="checkParamsStaffRequestEdit()" name="toWhom" placeholder="Исполнитель" id="toWhomEditStaff" />
+                <input   class="inc" readonly list="characterToWhom" th:value="${el.toWhom}"  name="toWhom" placeholder="Исполнитель" id="toWhomEditStaff" />
                 <datalist id="characterToWhom" >
 
                     <option th:each="position : ${positions}"
@@ -51,7 +51,8 @@
 
 
             <div class="DivRequest">
-                <input  list="characterStatus" class="inn"  onkeyup="checkParamsStaffRequestEdit()" name="status" placeholder="Статус заявки" id="statusEditStaff" />
+                <input  list="characterStatus" class="inn" type="search"
+                        onchange="checkParamsRequestEditForStaff()" name="status" placeholder="Статус заявки" id="statusEditStaff" />
                 <datalist id="characterStatus" >
 
                     <option value="" disabled selected hidden>Статус заявки</option>-->
@@ -62,7 +63,7 @@
             </div>
 
             <div class="DivRequest">
-                <input list="characterName" class="inn"  onkeyup="checkParamsStaffRequestEdit()" name="name" id="nameEditStaff" placeholder="ФИО">
+                <input list="characterName" class="inn" type="search" onchange="checkParamsRequestEditForStaff()" name="name" id="nameEditStaff" placeholder="ФИО">
                 <datalist id="characterName" >
                     <option
                             th:if="${#authentication.name == staff.position}"
@@ -75,7 +76,7 @@
             </div>
 
             <div class="DivRequest">
-                <textarea  class="size" name="text" onkeyup="checkParamsStaffRequestEdit()" id="textEditStaff" placeholder="Описать проблему" th:text="${el.text}"></textarea>
+                <textarea  class="sizeGray" readonly name="text"  id="textEditStaff" placeholder="Описать проблему" th:text="${el.text}"></textarea>
             </div>
             <div class="DivRequest">
                 <textarea  class="size" name="comment"  id="commentEditStaff" placeholder="Оставить комментарий" ></textarea>

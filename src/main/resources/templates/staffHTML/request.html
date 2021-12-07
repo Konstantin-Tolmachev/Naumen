@@ -19,22 +19,22 @@
             <div class="allDivRequest">
 
                 <div class="DivRequest" >
-                    <input class="inn"  onkeypress='validator(event)' id="room" type="text"  name="room" maxlength="10"   placeholder="№ кабинета*">
+                    <input class="inn"  onkeypress='validator(event)' id="room" type="text"  name="room" maxlength="10"   placeholder="№ кабинета">
                 </div>
 
                 <div class="DivRequest">
-                    <input type="hidden" class="inn" onkeyup="checkParams()"  id="level" name="level" placeholder="Уровень заявки*"/>
-                    <select class="inn" required
-                            onchange="document.getElementById('level').value=this.value;">
-                        <option value="" disabled selected hidden>Уровень заявки*</option>
-                        <option value="Срочный">Срочный</option>
-                        <option value="В течении дня">В течении дня</option>
-                    </select>
+                    <input list="levelS"  class="inn"
+                           onkeyup="checkParamsRequestForStaff()" name="level" placeholder="Уровень заявки*" id="level" />
+
+                    <datalist id="levelS">
+                        <option value="В течении дня">
+                        <option value="Срочный">
+                    </datalist>
                 </div>
 
 
                 <div class="DivRequest">
-                    <input list="characterFromWhom" class="inn" th:value="${#authentication.name}" onkeyup="checkParams()" id="fromWhom" name="fromWhom" placeholder="Заявитель*">
+                    <input list="characterFromWhom" class="inn" th:value="${#authentication.name}" onkeyup="checkParamsRequestForStaff()" id="fromWhom" name="fromWhom" placeholder="Заявитель*">
                     <datalist id="characterFromWhom" >
                         <option th:each="position : ${positions}"
                                 th:value="${position}"
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="DivRequest">
-                    <input list="character" class="inn"  onkeyup="checkParams()" id="toWhom" name="toWhom" placeholder="Исполнитель*">
+                    <input list="character" class="inn"  onkeyup="checkParamsRequestForStaff()" id="toWhom" name="toWhom" placeholder="Исполнитель*">
                     <datalist id="character" >
                         <option th:each="position : ${positions}"
                                 th:value="${position}"
@@ -56,8 +56,8 @@
 
 
                 <div class="DivRequest">
-                    <textarea onkeyup="checkParams()" id="text" class="size" name="text"
-                              placeholder="Опишите пробелему*"></textarea>
+                    <textarea onkeyup="checkParamsRequestForStaff()" id="text" class="size" name="text"
+                              placeholder="Опишите проблему*"></textarea>
                 </div>
                 <div class="DivRequest">
                     <Button class="btnAddRequest" id="submit" type="submit" disabled="disabled" >Отправить заявку</Button>
@@ -73,15 +73,30 @@
         <h1>Список заявок</h1>
         <div class="DivRequest">
             <form method="post" th:action="staff-filter-request">
-                <input type="hidden" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />
+
                 <input type="hidden" th:value="${#authentication.name}"  id="toWhomFilter" name="toWhom" placeholder="toWhom" />
-                <select class="inn"
-                        onchange="document.getElementById('statusFilter').value=this.value;">
-                    <option value="" disabled selected hidden>Статус заявки</option>
-                    <option value="Выполнено">Выполнено</option>
-                    <option value="На выполнении">На выполнении</option>
-                    <option value="Не выполнено">Не выполнено</option>
-                </select>
+
+<!--                <input type="" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />-->
+<!--                -->
+<!--                <select class="inn" required-->
+<!--                        onchange="document.getElementById('statusFilter').value=this.value;">-->
+<!--                    <option value="" disabled selected hidden>Статус заявки</option>-->
+<!--                    <option value="Выполнено">Выполнено</option>-->
+<!--                    <option value="На выполнении">На выполнении</option>-->
+<!--                    <option value="Не выполнено">Не выполнено</option>-->
+<!--                </select>-->
+
+                    <input list="levelF"  type="search" class="inn"
+                           onkeyup="checkParams()" name="filter" placeholder="Поиск по статусу заявки" id="statusFilter" />
+
+                    <datalist id="levelF">
+                        <option value="Выполнено">
+                        <option value="На выполнении">
+                        <option value="Не выполнено">
+                    </datalist>
+
+
+
                 <div class="DivRequest1">
                     <button class="btnSearchFilter" id="submitFilter"  type="submit">Найти</button>
 

@@ -98,7 +98,7 @@ input#addLname, #addFname, #addPname, #addPosition{
     text-indent: 3%;
 }
 
-input#positionFilter{
+input#position{
     height: 40px;
     font-size: 1.3rem;
     line-height: 100%;

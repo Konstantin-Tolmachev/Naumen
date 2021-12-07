@@ -17,7 +17,7 @@
 <section  class="authorization">
     <h1>Авторизация</h1>
     <form th:action="@{/}" th:authentication-success-handler-ref="authSuccessHandler" method="post">
-        <div>
+        <div class="container">
 
             <div class="input">
                 <input type="text" onkeyup="checkParams()" id="username-input" name="username" placeholder="Логин">
@@ -30,14 +30,19 @@
 
             <div th:if="${param.error}">
                 <div class="error">
-                    Логин или пароль введен неправильно!
+                    Логин или пароль введен неверно!
                 </div>
             </div>
 
-        </div>
             <div class="btn">
                 <input type="submit" id="asubmit" class="buttonAuth" value="Авторизоваться" >
             </div>
+
+        </div>
+
+<!--            <div class="btn">-->
+<!--                <input type="submit" id="asubmit" class="buttonAuth" value="Авторизоваться" >-->
+<!--            </div>-->
     </form>
 
     <div class="btn" sec:authorize="hasRole('ROLE_ADMIN')">
