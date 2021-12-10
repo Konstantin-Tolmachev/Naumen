@@ -1,3 +1,16 @@
+/* В форме авторизация в поле password-input можно посмотреть пароль homeHTML/authorization */
+
+function show_hide_password(target){
+    var input = document.getElementById('password-input');
+    if (input.getAttribute('type') == 'password') {
+        target.classList.add('view');
+        input.setAttribute('type', 'text');
+    } else {
+        target.classList.remove('view');
+        input.setAttribute('type', 'password');
+    }
+    return false;
+}
 
 /* Кнопка доступна, если все поля заполнены в форме для добавления нового сотрудника adminHTML/admin.html*/
 function checkParamsAddNewStaff() {
@@ -48,7 +61,7 @@ function checkParams() {
 
 
 
-/* Кнопка доступна, если все поля ответа на заявку заполнены adminHTML/requestEdit.html */
+/* Кнопка доступна, если все поля ответа на заявку заполнены adminHTML/r equestEdit.html */
 function checkParamsEdit () {
     var roomEdit = $('#roomEdit').val();
     var levelEdit = $('#levelEdit').val();
@@ -70,7 +83,7 @@ function checkParamsEdit () {
 
 
 /* Кнопка доступна, если все поля ответа на заявку заполнены adminHTML/requestReply.html */
-    function checkParamsReply () {
+function checkParamsReply () {
     var statusReply = $('#statusReply').val();
     var nameReply = $('#nameReply').val();
 
@@ -98,7 +111,7 @@ function checkParamsAddAccount() {
 }
 
 
-                        /* Скрипты для аккаунтов сотрудников */
+/* Скрипты для аккаунтов сотрудников */
 
 /* Кнопка доступна, если все поля заполнены в форме для написания заявки staffHTML/request.html*/
 function checkParamsRequestForStaff() {
@@ -140,17 +153,3 @@ function validator(evt) {
         if(theEvent.preventDefault) theEvent.preventDefault();
     }
 }
-
-/* В форме авторизация в поле password-input можно посмотреть пароль homeHTML/authorization */
-function show_hide_password(target){
-    var input = document.getElementById('password-input');
-    if (input.getAttribute('type') == 'password') {
-        target.classList.add('view');
-        input.setAttribute('type', 'text');
-    } else {
-        target.classList.remove('view');
-        input.setAttribute('type', 'password');
-    }
-    return false;
-}
-

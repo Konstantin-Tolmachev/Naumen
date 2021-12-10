@@ -1,30 +1,28 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/adminCSS/account.css"/>
     <title th:text="${title}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
     <header th:insert="blocksHTML/headerAdmin :: headerAdmin"></header>
 </head>
 <body>
 
-<section class="addNewStaff">
+<section class="addNewAccount">
     <h1 >Добавить аккаунт</h1>
 
-    <div class="allDivName">
-        <div class="staffsName1">Логин</div>
-        <div class="staffsName1">Пароль</div>
-        <div class="staffsName1">Роль</div>
+    <div class="inputAccount">
+        <div class="inputAccountName">Логин</div>
+        <div class="inputAccountName">Пароль</div>
+        <div class="inputAccountName">Роль</div>
     </div>
 
     <form th:action="@{/admin-account}" th:object="${userForm}" method="post">
         <input type="hidden" th:field="*{id}" th:value="${userForm.id}">
-            <div class="allDivName">
+            <div class="inputAccount">
                 <div>
                     <input  onkeyup="checkParamsAddAccount()" id="username" th:field="*{username}" placeholder="Логин*">
-
                     <p th:if="${#fields.hasErrors('username')} "
                        th:class="${#fields.hasErrors('username')}? error">Минимальное значение 3 символа</p>
                     <p th:text="${usernameError}"  class="error"></p>
@@ -49,18 +47,16 @@
 </section>
 
 <section class="allAccount">
-
     <h1 >Список аккаунтов</h1>
 
-    <div class="allDivName">
-        <div class="staffsName1">Логин</div>
-        <div class="staffsName1">Пароль</div>
-        <div class="staffsName1">Роль</div>
+    <div class="inputAccount">
+        <div class="inputAccountName">Логин</div>
+        <div class="inputAccountName">Пароль</div>
+        <div class="inputAccountName">Роль</div>
     </div>
 
-
-    <div th:each="el : ${allUsers}"   class="request" >
-        <div class="allDivName" >
+    <div th:each="el : ${allUsers}"   class="accounts" >
+        <div class="inputAccount" >
             <div th:text="${el.username}"></div>
             <div th:text="${el.password}"></div>
             <div th:each="role : ${el.roles}" th:text="${role.name}"></div>
@@ -69,17 +65,12 @@
         <form  th:action="'/admin-account/' + ${el.id} +'/remove'" method="post">
             <button class="btnDelete" type="submit">Удалить</button>
         </form>
-
     </div>
-
 </section>
 
-
-<div class="footer">
-    <p> &copy; "Предприятие "АБЦ" 2021.</p>
-</div>
+<div th:insert="blocksHTML/footer :: footer"></div>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="/js/request.js"></script>
+<script src="/js/allScripts.js"></script>
 </body>
 </html>

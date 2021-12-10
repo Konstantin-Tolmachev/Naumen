@@ -23,16 +23,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     UserService userService;
 
     /* Шифрование пароля при создании учетной записи */
-//    @Bean
-//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     /* Пароль при создании учетной записи НЕ шифруется */
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
+//    @Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return NoOpPasswordEncoder.getInstance();
+//    }
 
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
 
@@ -47,7 +47,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .authorizeRequests()
                 //     .antMatchers("/css/**","/js/**").permitAll()
-          //      .antMatchers("/").permitAll()
+                .antMatchers("/").permitAll()
                 .antMatchers("/staff-request/","/staff-request/**","/staff-status","/staff-filter-request").hasRole("STAFF")
                 .antMatchers("/admin","/admin/**","/admin-request","/admin-status","/admin-account","/filter-staff","/filter-request","/filter-request-from-whom").hasRole("ADMIN")
                 .anyRequest()
@@ -65,21 +65,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /* Шифрование пароля при создании учетной записи */
 
-//    @Autowired
-//    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
-//    }
-
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
     }
+
+    /* Пароль не шифруется при создании учетной записи */
+//    @Autowired
+//    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
+//    }
 
 
     /* Разрешаем Spring Security допускать следующие директории */
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/**","/js/**");
+        web.ignoring().antMatchers("/css/**","/js/**","/img/**");
 
     }
 }

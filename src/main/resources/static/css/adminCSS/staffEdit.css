@@ -49,23 +49,27 @@ body {
     }
 }
 
+/**/
 .divPosition{
     margin: 1%;
 }
 
+/**/
 .position{
     margin-left: 3%;
     display: inline;
     font-size: 1.5rem;
 }
 
+/**/
 .positionAuth{
     margin-left: 1%;
     display: inline;
     font-size: 1.5rem;
 }
 
-.StaffsFilter{
+/**/
+.allStaffs{
     outline: 1px solid #228B22;
     padding: 1%;
     box-shadow: 0 0 3pt 2pt #9ACD32;
@@ -75,13 +79,10 @@ body {
     margin-bottom: 17%;
     border-radius: 5px;
     background-color: white;
-
-
-
-
 }
 
-.StaffsFilter> h1 {
+/**/
+.allStaffs> h1 {
     text-align: center;
     font-size: 2.5rem;
     font-style: italic;
@@ -89,24 +90,13 @@ body {
     margin-bottom: 3%;
 }
 
-
-
-/*.request{*/
-/*    outline: 0.1px solid #228B22;*/
-/*    padding: 1%;*/
-/*    box-shadow: 0 0 1pt 0.1pt #228B22;*/
-/*    background: white;*/
-/*    margin-top: 1%;*/
-/*    width: 100%;*/
-
-/*}*/
-
+/**/
 .c1{
     column-count: 4;
     margin-bottom: 1%;
-
 }
 
+/**/
 input#fname, #lname, #pname, #position{
     width: 100%;
     height: 40px;
@@ -115,24 +105,24 @@ input#fname, #lname, #pname, #position{
     text-indent: 3%;
 }
 
+/**/
 .staffReq{
     text-align: center;
     /*display: table;*/
     margin:  auto;
     font-size: 1.1rem;
 }
+
+/**/
 .staffReq1{
     text-align: center;
     display: table;
     margin:  auto;
-
     font-size: 1.1rem;
     font-weight: bold;
 }
 
-
-
-
+/**/
 .btnUpdateStaff {
     padding-left: 3%;
     padding-right: 3%;
@@ -143,36 +133,21 @@ input#fname, #lname, #pname, #position{
     background: white;
     color: green;
 }
+
+/**/
 .btnUpdateStaff[disabled]:hover {
     cursor: default;
 }
+
+/**/
 .btnUpdateStaff:hover:not([disabled])  {
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
     opacity: 1;
     cursor: pointer;
 }
-/*.btnUpdate{*/
-/*    margin-left: 3%;*/
-/*    margin-top: 1%;*/
-/*    margin-bottom: 2%;*/
-/*    padding-left: 3%;*/
-/*    padding-right: 3%;*/
-/*    padding-top: 1%;*/
-/*    padding-bottom: 1%;*/
-/*    font-size: .9rem;*/
-/*    cursor: pointer;*/
-/*    background: white;*/
-/*    color: green;*/
-/*}*/
 
-/*.btnUpdate:hover{*/
-/*    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;*/
-/*    color: black;*/
-/*    opacity: 1;*/
-/*    cursor: pointer;*/
-/*}*/
-
+/**/
 .btnAuth {
     border: none;
     cursor: pointer;
@@ -183,13 +158,14 @@ input#fname, #lname, #pname, #position{
     text-decoration: none;
 }
 
+/**/
 .btnAuth:hover  {
     box-shadow: 0 0 0 0 white inset, 0 0 10px 1px green;
     border-radius: .3rem;
     color: #dddddd;
 }
 
-
+/**/
 .btnBack{
     padding-left: 3%;
     padding-right: 3%;
@@ -202,6 +178,7 @@ input#fname, #lname, #pname, #position{
     color: green;
 }
 
+/**/
 .btnBack:hover{
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
@@ -209,12 +186,11 @@ input#fname, #lname, #pname, #position{
     cursor: pointer;
 }
 
-
-
+/**/
 .footer{
     left: 0;
     bottom:0;
-    margin-top: 0%;
+    margin-top: 0;
     padding: 3%;
     width: 100%;
     height: 100px;

@@ -28,8 +28,8 @@ public class UserService implements UserDetailsService {
     AccountRepository accountRepository;
     @Autowired
     RoleRepository roleRepository;
-//    @Autowired
-//    BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     org.springframework.security.crypto.password.PasswordEncoder PasswordEncoder;

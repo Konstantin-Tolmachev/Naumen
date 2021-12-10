@@ -42,85 +42,33 @@ body {
     color: #dddddd;
 }
 
-.btnSubmit {
-    margin-right: 5px;
-    margin-left: 5px;
-    border: none;
-    cursor: pointer;
-    font-family: 'Arial', sans-serif;
-    font-size: 1.2rem;
-    color: white;
-    background-color: green;
-    text-align: center;
-    text-decoration: none;
-}
-.btnSubmit:hover  {
-    padding: .2rem;
-    border-radius: .3rem;
-    color: #fff;
-    background: #228B22;
-    text-decoration: none;
-    border: 2px solid ;
-    transition: all .2s ease-in-out;
-    padding-left: 1%;/*Отступы между текстом в шапке*/
-    padding-right: 1%;/*Отступы между текстом в шапке*/
-}
-
+/**/
 @media screen and (min-width: 900px) {
     .topmenu> .h  {
         float: right;
     }
 }
 
+/**/
 .divPosition{
     margin: 1%;
 }
 
+/**/
 .position{
     margin-left: 3%;
     display: inline;
     font-size: 1.5rem;
 }
 
+/**/
 .positionAuth{
     margin-left: 1%;
     display: inline;
     font-size: 1.5rem;
 }
 
-.n{
-    margin-top: 3%;
-    font-size: 2.2rem;
-}
-.name{
-    margin-left: 3%;
-    display: inline;
-}
-.name1{
-    margin-left: 1%;
-    display: inline;
-}
-
-.newRequest{
-    outline: 1px solid #228B22;
-    padding: 1%;
-    box-shadow: 0 0 3pt 2pt #9ACD32;
-    margin-top: 3%;
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-bottom: 3%;
-    border-radius: 5px;
-    background-color: white;
-}
-
-.newRequest > h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    font-style: italic;
-    color: black;
-    margin-bottom: 3%;
-}
-
+/**/
 .newRequest1{
     outline: 1px solid #228B22;
     padding: 1%;
@@ -136,6 +84,7 @@ body {
     overflow-x: hidden;
 }
 
+/**/
 .newRequest1 > h1 {
     text-align: center;
     font-size: 2.5rem;
@@ -144,57 +93,19 @@ body {
     margin-bottom: 3%;
 }
 
-.newRequest2{
-    outline: 1px solid #228B22;
-    padding: 1%;
-    box-shadow: 0 0 3pt 2pt #9ACD32;
-    margin-top: 3%;
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-bottom: 3%;
-    border-radius: 5px;
-    background-color: white;
-}
-
-.newRequest2 > h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    font-style: italic;
-    color: black;
-    margin-bottom: 3%;
-}
-
+/**/
 .DivRequest{
-
     padding-top: 1%;
 }
 
-.DivRequest1{
-    padding-top: 1%;
-}
-
-.in{
-    width: 72%;
-    height: 40px;
-    font-size: 1.3rem;
-}
-
+/**/
 .inn{
     width: 36%;
     height: 40px;
     font-size: 1.3rem;
 }
 
-.size{
-    width: 72%;
-    height: 100px;
-    min-width: 72%;
-    min-height: 100px;
-    max-width: 98%;
-    max-height: 200px;
-    font-size: 1.3rem;
-}
-
+/**/
 input#fromWhom, #statusFilter, #toWhom{
     height: 40px;
     width: 30%;
@@ -203,9 +114,7 @@ input#fromWhom, #statusFilter, #toWhom{
     text-indent: 2%;
 }
 
-
-
-
+/**/
 .btnComment{
     margin-bottom: 2%;
     padding-left: 3%;
@@ -218,6 +127,7 @@ input#fromWhom, #statusFilter, #toWhom{
     color: green;
 }
 
+/**/
 .btnComment:hover{
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
@@ -225,67 +135,7 @@ input#fromWhom, #statusFilter, #toWhom{
     cursor: pointer;
 }
 
-.btnComment1{
-    /*margin-left: 2%;*/
-    margin-top: 1%;
-    margin-bottom: 1%;
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    font-size: .9rem;
-    cursor: pointer;
-    background: white;
-    color: green;
-}
-
-.btnComment1:hover{
-    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
-    color: black;
-    opacity: 1;
-    cursor: pointer;
-}
-
-
-.btnBack{
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    font-size: .9rem;
-    cursor: pointer;
-    background: white;
-    color: green;
-}
-
-.btnBack:hover{
-    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
-    color: black;
-    opacity: 1;
-    cursor: pointer;
-}
-
-.statusRequest{
-    box-shadow: 0 0 3pt 2pt #9ACD32;
-    margin-top: 3%;
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-bottom: 3%;
-    border-radius: 5px;
-    background-color: white;
-    min-height: 0;
-    max-height: 500px;
-    overflow: scroll;
-    overflow-x: hidden;
-}
-
-.statusRequest> h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    font-style: italic;
-    color: black;
-    margin-bottom: 3%;
-}
+/**/
 .nameRequest{
     margin-left: 2%;
     margin-bottom: 0.2%;
@@ -294,14 +144,14 @@ input#fromWhom, #statusFilter, #toWhom{
     text-align: left;
     font-size: 1.1rem;
 }
+
+/**/
 .p{
     margin-left: 3%;
     margin-bottom: 1%;
 }
-/*------------------------Добавить заявку-------------------------------*/
 
-
-
+/**/
 .request{
     outline: 0 solid #228B22;
     padding: 1%;
@@ -313,109 +163,7 @@ input#fromWhom, #statusFilter, #toWhom{
     border-radius: 5px;
 }
 
-
-.c1{
-    column-count: 4;
-    margin-left: 3%;
-    margin-right: 3%;
-}
-
-.c2{
-    margin-left: 3%;
-}
-
-.c3{
-    column-count: 2;
-    margin-left: 3%;
-    margin-right: 3%;
-}
-
-.staffReq{
-    display: table;
-    margin:  auto;
-    padding-bottom: 3%;
-    font-size: 1.1rem;
-}
-
-.wrap2{
-    margin:  auto;
-    font-size: 1.1rem;
-}
-
-.delete{
-    margin: 1%;
-    padding: 1%;
-    font-size: 1.1rem;
-    cursor: pointer;
-}
-
-.delete:hover{
-    transition: all .2s ease-in-out;
-    box-shadow: 0 0 1px 0 white inset, 0 0 3px 1px ;
-    color: black;
-    opacity: 1;
-    cursor: pointer;
-    width: 14.5%;
-}
-
-.delete > a{
-    color: black;
-}
-
-.request > .allDiv > h4, .request > h4{
-    margin-top: 1%;
-    margin-bottom: 1%;
-    font-size: 1.2rem;
-}
-
-/*-------------------------------------------Фильтр--------------------------------------------------------*/
-
-.btnEdit{
-    padding: 1%;
-    font-size: 1.1rem;
-    cursor: pointer;
-    width: 12%;
-    text-align: center;
-    float: left;
-}
-
-.btnEdit:hover{
-    opacity: 1;
-    cursor: pointer;
-    color: black;
-    /*border: 1px solid transparent;*/
-    transition: all .2s ease-in-out;
-    box-shadow: 0 0 0 0 white , 0 0 0 1px green;
-}
-
-.btnEdit > a{
-    color: black;
-}
-
-.btnDelete{
-    text-decoration:underline;
-    border: none;
-    margin-left: 1%;
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    font-size: 1rem;
-    cursor: pointer;
-    background: white;
-    color: black;
-}
-
-.btnDelete:hover{
-    opacity: 1;
-    cursor: pointer;
-    color: black;
-    /*border: 1px solid transparent;*/
-    transition: all .2s ease-in-out;
-    box-shadow: 0 0 0 0 white , 0 0 0 1px green;
-}
-
-
+/**/
 .btnAuth {
     border: none;
     cursor: pointer;
@@ -426,27 +174,18 @@ input#fromWhom, #statusFilter, #toWhom{
     text-decoration: none;
 }
 
+/**/
 .btnAuth:hover  {
     box-shadow: 0 0 0 0 white inset, 0 0 10px 1px green;
     border-radius: .3rem;
     color: #dddddd;
 }
 
-select:required:invalid {
-    color: gray;
-}
-option[value=""][disabled] {
-    display: none;
-}
-option {
-    color: black;
-}
-
-
+/**/
 .footer{
     left: 0;
     bottom:0;
-    margin-top: 0%;
+    margin-top: 0;
     padding: 3%;
     width: 100%;
     height: 100px;

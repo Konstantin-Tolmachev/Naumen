@@ -1,26 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <link rel="stylesheet" href="/css/staffCSS/request.css"/>
-
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/staffCSS/requestReply.css"/>
     <title th:text="${'Ответить на заявку'}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
     <header th:insert="blocksHTML/headerStaff :: headerStaff"></header>
 
 </head>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 
 <body>
-
 
 <section class="newRequest">
     <h1 >Ответить на заявку</h1>
 
     <form  method="post">
-        <div th:each="el : ${post}" class="allDivRequest">
+        <div th:each="el : ${post}">
 
             <div class="DivRequest">
                 <input class="inc" readonly type="text" th:value="${el.room}"  id="roomEdit" name="room" placeholder="№ кабинета">
@@ -28,19 +24,15 @@
 
             <div class="DivRequest">
                 <input  class="inc" readonly th:value="${el.level}"  name="level" placeholder="Уровень заявки" id="levelEdit" />
-
             </div>
 
             <div class="DivRequest">
-                <input  class="inc" readonly list="characterFromWhom" th:value="${el.fromWhom}"  name="fromWhom" placeholder="Заявитель" id="fromWhomEdit" />
-
+                <input  class="inc" readonly  th:value="${el.fromWhom}"  name="fromWhom" placeholder="Заявитель" id="fromWhomEdit" />
             </div>
-
 
             <div class="DivRequest">
                 <input   class="inc" readonly list="characterToWhom" th:value="${el.toWhom}"  name="toWhom" placeholder="Исполнитель" id="toWhomEditStaff" />
                 <datalist id="characterToWhom" >
-
                     <option th:each="position : ${positions}"
                             th:value="${position}"
                             th:text="${position}">
@@ -49,12 +41,10 @@
             </div>
 
 
-
             <div class="DivRequest">
                 <input  list="characterStatus" class="inn" type="search"
                         onchange="checkParamsRequestEditForStaff()" name="status" placeholder="Статус заявки" id="statusEditStaff" />
                 <datalist id="characterStatus" >
-
                     <option value="" disabled selected hidden>Статус заявки</option>-->
                     <option value="Выполнено">Выполнено</option>
                     <option value="На выполнении">На выполнении</option>
@@ -71,7 +61,6 @@
                             th:value="${staff.lname}+ ' ' +${staff.fname}+ ' ' +${staff.pname}"
                             th:text="${staff.lname}+' '+${staff.fname}+' '+${staff.pname}">
                     </option>
-
                 </datalist>
             </div>
 
@@ -89,22 +78,11 @@
     <button class="btnBack" onclick="document.location='/staff-request'">Назад</button>
 </section>
 
-
-
-<div class="footer">
-    <p> &copy; "Предприятие "АБЦ" 2021.</p>
-</div>
-
-
+<div th:insert="blocksHTML/footer :: footer"></div>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="/js/request.js"></script>
-
-
+<script src="/js/allScripts.js"></script>
 
 </body>
-
-
-
 
 </html>

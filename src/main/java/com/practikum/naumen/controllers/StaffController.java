@@ -25,22 +25,21 @@ public class StaffController {
     @Autowired
     private StaffRepository staffRepository;
 
+    /*----------- Класс для вывода должностей без дубликатов -----------*/
+
+    private static Set<String> extractPositions (Collection<Staff> staffs) {
+        return staffs.stream().map(Staff::getPosition).collect(Collectors.toSet());
+    }
+
     /*----------- Вывод всех заявок -----------*/
 
     @GetMapping("/staff-request")
     public String staffRequest(Model model) {
-//        Iterable<Request> requests = requestRepository.findAllByOrderByIdDesc();
         Collection<Request> requests = requestRepository.findAllByStatusWhere();
         model.addAttribute("requests", requests);
         Collection<Staff> staffs = staffRepository.findAllByOrderByIdDesc();
         model.addAttribute("positions", extractPositions(staffs));
         return "StaffHTML/request";
-    }
-
-    /*----------- Класс для вывода должностей без дубликатов -----------*/
-
-    private static Set<String> extractPositions (Collection<Staff> staffs) {
-        return staffs.stream().map(Staff::getPosition).collect(Collectors.toSet());
     }
 
     /*----------- Добавить новую заявку -----------*/
@@ -66,7 +65,7 @@ public class StaffController {
 
     /*----------- Значения из Бд занесены в форму редактирования -----------*/
 
-    @GetMapping("/staff-request/{id}/edit")
+    @GetMapping("/staff-request/{id}/reply")
     public String staffRequest (@PathVariable(value = "id") long id, Model model) {
         if(!requestRepository.existsById (id)){
             return "redirect:/staff-request";
@@ -79,12 +78,12 @@ public class StaffController {
         model.addAttribute("post", res);
         List<Staff> staff = (List<Staff>) staffRepository.findAll();
         model.addAttribute("staffs", staff);
-        return "staffHTML/requestEdit";
+        return "staffHTML/requestReply";
     }
 
     /*-----------Редактирование заявки и сохранение изменений-----------*/
 
-    @PostMapping("/staff-request/{id}/edit")
+    @PostMapping("/staff-request/{id}/reply")
     public String staffRequestUpdate(@PathVariable(value = "id") long id,
                                    @RequestParam String level,
                                    @RequestParam String room,

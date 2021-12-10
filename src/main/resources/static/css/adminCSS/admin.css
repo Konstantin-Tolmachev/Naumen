@@ -35,7 +35,6 @@ body {
     transition: all .2s ease-in-out;
 }
 
-
 /*Изменения цвета при наведении курсора*/
 .topmenu li a:hover {
     box-shadow: 0 0 0 0 white inset, 0 0 10px 1px green;
@@ -65,7 +64,7 @@ body {
     font-size: 1.5rem;
 }
 
-
+/*Добавить нового сотрудника*/
 .addNewStaff{
     outline: 1px solid #228B22;
     padding: 1%;
@@ -78,6 +77,7 @@ body {
     background-color: white;
 }
 
+/*Тест в секции добавить нового сотрудника*/
 .addNewStaff> h1 {
     text-align: center;
     font-size: 2.5rem;
@@ -86,10 +86,12 @@ body {
     margin-bottom: 3%;
 }
 
+/*!!!*/
 .addNewStaff> .allDivName > .staffsName {
     font-size: 1.3rem;
 }
 
+/*!!!*/
 input#addLname, #addFname, #addPname, #addPosition{
     width: 100%;
     height: 40px;
@@ -97,25 +99,26 @@ input#addLname, #addFname, #addPname, #addPosition{
     line-height: 100%;
     text-indent: 3%;
 }
-
+/*!!!*/
 input#position{
     height: 40px;
     font-size: 1.3rem;
     line-height: 100%;
     text-indent: 3%;
 }
-
+/*!!!*/
 .staffsName{
     width: 100%;
     display: table;
     padding-bottom: 2%;
 }
+/*!!!*/
 .allDivName{
     column-count: 4;
     text-align: center;
     padding-bottom: 1%;
 }
-
+/*!!!*/
 .btnStaff {
     padding-left: 3%;
     padding-right: 3%;
@@ -126,9 +129,11 @@ input#position{
     background: white;
     color: green;
 }
+/*!!!*/
 .btnStaff[disabled]:hover {
     cursor: default;
 }
+/*!!!*/
 .btnStaff:hover:not([disabled])  {
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
@@ -136,23 +141,7 @@ input#position{
     cursor: pointer;
 }
 
-.footer{
-    left: 0;
-    bottom:0;
-    margin-top: 0%;
-    padding: 3%;
-    width: 100%;
-    height: 100px;
-    background-color: green;
-}
-
-
-
-/*----------------------------------------------------------------------------------------------------------------------------*/
-
-
-
-
+/*!!!*/
 .StaffsFilter{
     outline: 1px solid #228B22;
     padding: 1%;
@@ -166,10 +155,9 @@ input#position{
     height: 900px;
     overflow: scroll;
     overflow-x: hidden;
-
-
 }
 
+/*!!!*/
 .StaffsFilter> h1 {
     text-align: center;
     font-size: 2.5rem;
@@ -178,24 +166,12 @@ input#position{
     margin-bottom: 3%;
 }
 
-
-
-.DivRequest{
-
-}
-
-.DivRequest1{
+/*!!!*/
+.filterSearch{
     padding-top: 1%;
 }
 
-
-.inn{
-    width: 24%;
-    height: 40px;
-    font-size: 1.3rem;
-}
-
-
+/*!!!*/
 .btnComment{
     padding-left: 3%;
     padding-right: 3%;
@@ -207,20 +183,14 @@ input#position{
     color: green;
 }
 
+/*!!!*/
 .btnComment:hover{
     box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
     cursor: pointer;
 }
 
-
-
-
-
-
-
-/*-------------Фильтр---------------------*/
-
+/*!!!*/
 .request{
     outline: 0.1px solid #228B22;
     padding: 1%;
@@ -228,13 +198,14 @@ input#position{
     background: white;
     margin-top: 1%;
     width: 100%;
-
 }
 
+/*!!!*/
 .c1{
     column-count: 4;
 }
 
+/*!!!*/
 .staffReq{
     display: table;
     margin:  auto;
@@ -242,6 +213,7 @@ input#position{
     font-size: 1.1rem;
 }
 
+/*!!!*/
 .staffReq1{
     display: table;
     margin:  auto;
@@ -250,8 +222,7 @@ input#position{
     font-weight: bold;
 }
 
-
-
+/*!!!*/
 .btnEdit{
     padding: 1%;
     font-size: 1.1rem;
@@ -261,20 +232,21 @@ input#position{
     float: left;
 }
 
+/*!!!*/
 .btnEdit:hover{
     opacity: 1;
     cursor: pointer;
     color: black;
-
-    /*border: 1px solid transparent;*/
     transition: all .2s ease-in-out;
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }
 
+/*!!!*/
 .btnEdit > a{
     color: black;
 }
 
+/*!!!*/
 .btnDelete{
     text-decoration:underline;
     border: none;
@@ -290,6 +262,7 @@ input#position{
 
 }
 
+/*!!!*/
 .btnDelete:hover{
     opacity: 1;
     cursor: pointer;
@@ -299,6 +272,7 @@ input#position{
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }
 
+/*!!!*/
 .btnAuth {
     border: none;
     cursor: pointer;
@@ -309,12 +283,14 @@ input#position{
     text-decoration: none;
 }
 
+/*!!!*/
 .btnAuth:hover  {
     box-shadow: 0 0 0 0 white inset, 0 0 10px 1px green;
     border-radius: .3rem;
     color: #dddddd;
 }
 
+/*!!!*/
 .footer{
     left: 0;
     bottom:0;

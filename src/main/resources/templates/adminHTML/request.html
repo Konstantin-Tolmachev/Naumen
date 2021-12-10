@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/adminCSS/request.css">
     <title th:text="${'Заявки'}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <header th:insert="blocksHTML/headerAdmin :: headerAdmin"></header>
 </head>
-<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>-->
 <body>
 
-<section class="sectionRequest">
+<section>
     <section class="newRequest2">
         <h1>Написать заявку</h1>
 
         <form  th:action="@{/admin-request}"
               method="post" class="form">
-            <div class="allDivRequest">
-
-
+            <div>
 
                 <div class="DivRequest" >
                    <input class="inn"  id="room" type="text"  name="room" maxlength="10"   placeholder="№ кабинета">
@@ -28,12 +25,11 @@
 
                 <div class="DivRequest">
                     <input  list="characterLevel" class="inn"  onkeyup="checkParams()" name="level" placeholder="Уровень заявки*" id="level" />
-                    <datalist id="characterLevel" >
-
-                        <option value="" disabled selected hidden>Уровень заявки*</option>-->
-                        <option value="Срочный">Срочный</option>
-                        <option value="В течении дня">В течении дня</option>
-                    </datalist>
+                        <datalist id="characterLevel" >
+                            <option value="" disabled selected hidden>Уровень заявки*</option>-->
+                            <option value="Срочный">Срочный</option>
+                            <option value="В течении дня">В течении дня</option>
+                        </datalist>
                 </div>
 
 
@@ -44,7 +40,6 @@
                                 th:value="${position}"
                                 th:text="${position}">
                         </option>
-
                     </datalist>
                 </div>
 
@@ -71,7 +66,7 @@
 </section>
 
 
-<section class="sectionRequest">
+<section>
     <div class="newRequest1">
         <h1>Список заявок</h1>
         <div class="DivRequest">
@@ -94,10 +89,7 @@
                     </option>
                 </datalist>
 
-
-
-                    <input  list="characterStatus" class="inn"   name="filter" placeholder="Статус заявки" id="statusFilter" />
-
+                <input  list="characterStatus" class="inn"   name="filter" placeholder="Статус заявки" id="statusFilter" />
                 <datalist id="characterStatus">
                     <option value="Выполнено">
                     <option value="На выполнении">
@@ -129,7 +121,8 @@
                 </div>
                 <h4>Именование заявки:</h4>
                 <div class="c2">
-                    <div th:text="${el.text}" class="wrap2"><textarea type="text" id="Rtext" name="text"></textarea>
+                    <div th:text="${el.text}" class="wrap2">
+                        <textarea type="text" id="Rtext" name="text"></textarea>
                     </div>
                 </div>
                 <h4>Исполнитель:</h4>
@@ -149,14 +142,15 @@
 
                 <h4>Комментарий:</h4>
                 <div class="c2">
-                    <div th:text="${el.comment}" class="wrap2"><textarea type="text" id="Ctext" name="comment"></textarea>
+                    <div th:text="${el.comment}" class="wrap2">
+                        <textarea type="text" id="Ctext" name="comment"></textarea>
                     </div>
                 </div>
 
 
-                <div class="inline">
+                <div >
                     <div class="btnEdit"><a th:href="'/admin-request/' + ${el.id} + '/edit'">Редактировать</a></div>
-                    <div th:if="${el.toWhom == 'Администратор'}">
+                    <div th:if="${el.toWhom == #authentication.name}">
                     <div class="btnEdit"><a th:href="'/admin-request/' + ${el.id} + '/reply'">Ответить</a></div>
                     </div>
                     <form th:action="'/admin-request/' + ${el.id} +'/remove'" method="post">
@@ -165,16 +159,11 @@
                 </div>
               </div>
            </div>
-<!--        </div>-->
     </div>
 </section>
-
-<div class="footer">
-    <p> &copy; "Предприятие "АБЦ" 2021.</p>
-</div>
-
+<div th:insert="blocksHTML/footer :: footer"></div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="/js/request.js"></script>
+<script src="/js/allScripts.js"></script>
 
 </body>
 

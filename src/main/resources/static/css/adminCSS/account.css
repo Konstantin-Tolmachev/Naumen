@@ -35,7 +35,6 @@ body {
     transition: all .2s ease-in-out;
 }
 
-
 /*Изменения цвета при наведении курсора*/
 .topmenu li a:hover {
     box-shadow: 0 0 0 0 white inset, 0 0 10px 1px green;
@@ -43,25 +42,46 @@ body {
     color: #dddddd;
 }
 
+/*Кнопка "Выйти" справа*/
 @media screen and (min-width: 900px) {
     .topmenu> .h  {
         float: right;
     }
 }
 
-.Roles {
+/*Кнопка "Выйти"*/
+.btnAuth {
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: white;
+    background-color: green;
+    text-align: center;
+    text-decoration: none;
+}
+/*Изменение кнопки "Выйти" при наведении курсора*/
+.btnAuth:hover  {
+    box-shadow: 0 0 0 0 white inset, 0 0 10px 1px green;
+    border-radius: .3rem;
+    color: #dddddd;
+}
+
+/*Секция добавления аккаунта*/
+.addNewAccount{
     outline: 1px solid #228B22;
     padding: 1%;
     box-shadow: 0 0 3pt 2pt #9ACD32;
-    margin-top: 3%;
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-bottom: 3%;
+    margin: 3%;
+    /*margin-top: 3%;*/
+    /*margin-left: 3%;*/
+    /*margin-right: 3%;*/
+    /*margin-bottom: 3%;*/
     border-radius: 5px;
     background-color: white;
 }
 
-.Roles> h1 {
+/*Шрифт в секции аккаунт*/
+.addNewAccount> h1 {
     text-align: center;
     font-size: 2.5rem;
     font-style: italic;
@@ -69,17 +89,29 @@ body {
     margin-bottom: 3%;
 }
 
+/*Поля ввода для нового аккаунта*/
+.inputAccount{
+    column-count: 3;
+    text-align: center;
+    padding-bottom: 1%;
+}
 
+/*Размер шрифта*/
+.addNewStaff> .inputAccount > .staffsName {
+    font-size: 1.3rem;
+}
+/*Отступ должность + имя должности*/
 .divPosition{
     margin: 1%;
 }
 
+/*Должность*/
 .position{
     margin-left: 3%;
     display: inline;
     font-size: 1.5rem;
 }
-
+/*Авторизованная должность*/
 .positionAuth{
     margin-left: 1%;
     display: inline;
@@ -87,26 +119,49 @@ body {
 }
 
 
-.addNewStaff{
-    outline: 1px solid #228B22;
+/*Поля ввода для нового аккаунта*/
+.inputAccountName{
+    display: table;
+    margin:  auto;
+    padding-bottom: 3%;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/*Размещение вывода аккаунтов*/
+.accounts{
+    outline: 0.1px solid #228B22;
     padding: 1%;
-    box-shadow: 0 0 3pt 2pt #9ACD32;
-    margin-top: 3%;
-    margin-left: 3%;
-    margin-right: 3%;
-    margin-bottom: 3%;
-    border-radius: 5px;
-    background-color: white;
+    box-shadow: 0 0 1pt 0.1pt #228B22;
+    background: white;
+    margin-top: 1%;
+    width: 100%;
 }
 
-.addNewStaff> h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    font-style: italic;
+/*Расположение кнопки "Добавить"*/
+.btnAddAccount {
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    font-size: .9rem;
+    cursor: pointer;
+    background: white;
+    color: green;
+}
+/*Кнопка "Добавить" не активна, если поля не заполнены*/
+.btnAddAccount[disabled]:hover {
+    cursor: default;
+}
+/*Кнопка "Добавить" изменяется при наведении*/
+.btnAddAccount:hover:not([disabled])  {
+    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
     color: black;
-    margin-bottom: 3%;
+    opacity: 1;
+    cursor: pointer;
 }
 
+/*Секция вывода имеющихся аккаунтов"*/
 .allAccount{
     outline: 1px solid #228B22;
     padding: 1%;
@@ -122,6 +177,7 @@ body {
     overflow-x: hidden;
 }
 
+/*Шрифт в секции вывода аккаунтов"*/
 .allAccount> h1 {
     text-align: center;
     font-size: 2.5rem;
@@ -130,219 +186,7 @@ body {
     margin-bottom: 3%;
 }
 
-.addNewStaff> .allDivName > .staffsName {
-    font-size: 1.3rem;
-}
-
-.staffsName1{
-    display: table;
-    margin:  auto;
-    padding-bottom: 3%;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-input#username, #password, #roles{
-    width: 100%;
-    height: 40px;
-    font-size: 1.3rem;
-    line-height: 100%;
-    text-indent: 2%;
-}
-.error {
-    color: red;
-    font-size: 0.8rem;
-    margin-bottom: 1%;
-
-}
-
-.staffsName{
-    width: 100%;
-    display: table;
-    padding-bottom: 2%;
-}
-.allDivName{
-    column-count: 3;
-    text-align: center;
-    padding-bottom: 1%;
-}
-
-/*.btnAddAccount{*/
-/*    padding-left: 3%;*/
-/*    padding-right: 3%;*/
-/*    padding-top: 1%;*/
-/*    padding-bottom: 1%;*/
-/*    font-size: .9rem;*/
-/*    cursor: pointer;*/
-/*    background: white;*/
-/*    color: green;*/
-/*}*/
-
-/*.btnAddAccount:hover{*/
-/*    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;*/
-/*    color: black;*/
-/*    opacity: 1;*/
-/*    cursor: pointer;*/
-/*}*/
-
-
-.btnAddAccount {
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    font-size: .9rem;
-    cursor: pointer;
-    background: white;
-    color: green;
-}
-.btnAddAccount[disabled]:hover {
-    cursor: default;
-}
-.btnAddAccount:hover:not([disabled])  {
-    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
-    color: black;
-    opacity: 1;
-    cursor: pointer;
-}
-
-.footer{
-    left: 0;
-    bottom:0;
-    margin-top: 0%;
-    padding: 3%;
-    width: 100%;
-    height: 100px;
-    background-color: green;
-}
-
-
-
-/*----------------------------------------------------------------------------------------------------------------------------*/
-
-
-
-
-/*.StaffsFilter{*/
-/*    outline: 1px solid #228B22;*/
-/*    padding: 1%;*/
-/*    box-shadow: 0 0 3pt 2pt #9ACD32;*/
-/*    margin-top: 3%;*/
-/*    margin-left: 3%;*/
-/*    margin-right: 3%;*/
-/*    margin-bottom: 3%;*/
-/*    border-radius: 5px;*/
-/*    background-color: white;*/
-/*    height: 900px;*/
-/*    overflow: scroll;*/
-/*    overflow-x: hidden;*/
-/*}*/
-
-.StaffsFilter> h1 {
-    text-align: center;
-    font-size: 2.5rem;
-    font-style: italic;
-    color: black;
-    margin-bottom: 3%;
-}
-
-
-
-.DivRequest{
-
-}
-
-.DivRequest1{
-    padding-top: 1%;
-}
-
-
-.inn{
-    width: 24%;
-    height: 40px;
-    font-size: 1.3rem;
-}
-
-
-.btnComment{
-    padding-left: 3%;
-    padding-right: 3%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    font-size: .9rem;
-    cursor: pointer;
-    background: white;
-    color: green;
-}
-
-.btnComment:hover{
-    box-shadow: 0 0 1px 0 white inset, 0 0 10px 1px green;
-    color: black;
-    cursor: pointer;
-}
-
-
-
-
-
-
-
-/*-------------Фильтр---------------------*/
-
-.request{
-    outline: 0.1px solid #228B22;
-    padding: 1%;
-    box-shadow: 0 0 1pt 0.1pt #228B22;
-    background: white;
-    margin-top: 1%;
-    width: 100%;
-
-}
-
-.c1{
-    column-count: 2;
-}
-
-.staffReq{
-    display: table;
-    margin:  auto;
-    padding-bottom: 3%;
-    font-size: 1.1rem;
-}
-
-.staffReq1{
-    display: table;
-    margin:  auto;
-    padding-bottom: 3%;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-
-
-.btnEdit{
-    padding: 1%;
-    font-size: 1.1rem;
-    cursor: pointer;
-    width: 12%;
-    text-align: center;
-    float: left;
-}
-
-.btnEdit:hover{
-    opacity: 1;
-    cursor: pointer;
-    color: black;
-
-    /*border: 1px solid transparent;*/
-    transition: all .2s ease-in-out;
-    box-shadow: 0 0 0 0 white , 0 0 0 1px green;
-}
-
-.btnEdit > a{
-    color: black;
-}
-
+/*Расположение кнопка "Удалить"*/
 .btnDelete{
     text-decoration:underline;
     border: none;
@@ -355,9 +199,9 @@ input#username, #password, #roles{
     cursor: pointer;
     background: white;
     color: black;
-
 }
 
+/*Изменение кнопки "Удалить" при наведении курсора*/
 .btnDelete:hover{
     opacity: 1;
     cursor: pointer;
@@ -367,22 +211,23 @@ input#username, #password, #roles{
     box-shadow: 0 0 0 0 white , 0 0 0 1px green;
 }
 
-.btnAuth {
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: white;
-    background-color: green;
-    text-align: center;
-    text-decoration: none;
+/*Размер input*/
+input#username, #password, #roles{
+    width: 100%;
+    height: 40px;
+    font-size: 1.3rem;
+    line-height: 100%;
+    text-indent: 2%;
 }
 
-.btnAuth:hover  {
-    box-shadow: 0 0 0 0 white inset, 0 0 10px 1px green;
-    border-radius: .3rem;
-    color: #dddddd;
+/*Текст ошибки при создании нового аккаунта*/
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-bottom: 1%;
 }
 
+/*Расположение подвала*/
 .footer{
     left: 0;
     bottom:0;
@@ -394,3 +239,4 @@ input#username, #password, #roles{
     font-size: 1.1rem;
     color: white;
 }
+

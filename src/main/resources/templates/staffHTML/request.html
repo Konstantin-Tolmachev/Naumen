@@ -1,22 +1,22 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/staffCSS/request.css"/>
-    <title th:text="${title}"></title>
+    <title th:text="${'Заявки'}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <header th:insert="blocksHTML/headerStaff :: headerStaff"></header>
 </head>
 <body>
 
-<section class="sectionRequest">
+<section>
     <section class="newRequest2">
         <h1>Написать заявку</h1>
 
         <form  th:action="@{/staff-request}"
                method="post" class="form">
-            <div class="allDivRequest">
+            <div>
 
                 <div class="DivRequest" >
                     <input class="inn"  onkeypress='validator(event)' id="room" type="text"  name="room" maxlength="10"   placeholder="№ кабинета">
@@ -53,11 +53,8 @@
                     </datalist>
                 </div>
 
-
-
                 <div class="DivRequest">
-                    <textarea onkeyup="checkParamsRequestForStaff()" id="text" class="size" name="text"
-                              placeholder="Опишите проблему*"></textarea>
+                    <textarea onkeyup="checkParamsRequestForStaff()" id="text" class="size" name="text" placeholder="Опишите проблему*"></textarea>
                 </div>
                 <div class="DivRequest">
                     <Button class="btnAddRequest" id="submit" type="submit" disabled="disabled" >Отправить заявку</Button>
@@ -68,7 +65,7 @@
 </section>
 
 
-<section class="sectionRequest">
+<section>
     <div class="newRequest1">
         <h1>Список заявок</h1>
         <div class="DivRequest">
@@ -76,15 +73,6 @@
 
                 <input type="hidden" th:value="${#authentication.name}"  id="toWhomFilter" name="toWhom" placeholder="toWhom" />
 
-<!--                <input type="" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />-->
-<!--                -->
-<!--                <select class="inn" required-->
-<!--                        onchange="document.getElementById('statusFilter').value=this.value;">-->
-<!--                    <option value="" disabled selected hidden>Статус заявки</option>-->
-<!--                    <option value="Выполнено">Выполнено</option>-->
-<!--                    <option value="На выполнении">На выполнении</option>-->
-<!--                    <option value="Не выполнено">Не выполнено</option>-->
-<!--                </select>-->
 
                     <input list="levelF"  type="search" class="inn"
                            onkeyup="checkParams()" name="filter" placeholder="Поиск по статусу заявки" id="statusFilter" />
@@ -97,14 +85,13 @@
 
 
 
-                <div class="DivRequest1">
+                <div class="DivRequest">
                     <button class="btnSearchFilter" id="submitFilter"  type="submit">Найти</button>
 
                 </div>
             </form>
         </div>
 
-<!--        <div th:each="el : ${requests}" class="request">-->
             <div th:if="${#authentication.name == el.toWhom}" th:each="el : ${requests}"  class="request">
 
             <h4>Заказчик:</h4>
@@ -144,23 +131,22 @@
 
                 <h4>Комментарий:</h4>
                 <div class="c2">
-                    <div th:text="${el.comment}" class="wrap2"><textarea type="text" id="Ctext" name="comment"></textarea>
+                    <div th:text="${el.comment}" class="wrap2">
+                        <textarea type="text" id="Ctext" name="comment"></textarea>
                     </div>
                 </div>
-
-                    <div class="btnEdit"><a th:href="'/staff-request/' + ${el.id} + '/edit'">Ответить на заявку</a></div>
-
+                    <div class="btnEdit">
+                        <a th:href="'/staff-request/' + ${el.id} + '/reply'">Ответить на заявку</a>
+                    </div>
             </div>
         </div>
     </div>
 </section>
 
-<div class="footer">
-    <p> &copy; "Предприятие "АБЦ" 2021.</p>
-</div>
+<div th:insert="blocksHTML/footer :: footer"></div>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="/js/request.js"></script>
+<script src="/js/allScripts.js"></script>
 
 </body>
 </html>

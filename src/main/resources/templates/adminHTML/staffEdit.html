@@ -1,30 +1,29 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/adminCSS/staffEdit.css"/>
     <title th:text="${'Редактировать сотрудника'}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="">
     <header th:insert="blocksHTML/headerAdmin :: headerAdmin"></header>
 
-
-
-
 </head>
-<body>
-<section class="sectionRequest">
-    <div class="StaffsFilter">
-        <h1>Редактировать сотрудника</h1>
-        <div class="DivRequest" >
-            <div class="request">
-                <div class="c1">
 
+<body>
+
+<section>
+    <div class="allStaffs">
+        <h1>Редактировать сотрудника</h1>
+        <div>
+            <div>
+                <div class="c1">
                     <div class="staffReq1">Фамилия</div>
                     <div class="staffReq1">Имя</div>
                     <div class="staffReq1">Отчество</div>
                     <div class="staffReq1">Должность</div>
                 </div>
-                <div class="allDiv">
+                <div>
 
                     <form  method="post">
                         <div  th:each="el : ${post}" class="c1">
@@ -39,7 +38,7 @@
                                 </option>
                             </datalist>
                         </div>
-                        <form class="wrap" th:action="@{/AllStaff}" method="post" >
+                        <form th:action="@{/AllStaff}" method="post" >
                             <button class="btnUpdateStaff" type="submit" id="btnUpdateStaff" disabled>Обновить</button>
                         </form>
                     </form>
@@ -52,14 +51,10 @@
 </section>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="/js/request.js"></script>
-
+<script src="/js/allScripts.js"></script>
 </body>
 
-<div class="footer">
-    <p> &copy; "Предприятие "АБЦ"" 2021.</p>
-</div>
-
+<div th:insert="blocksHTML/footer :: footer"></div>
 
 
 </html>

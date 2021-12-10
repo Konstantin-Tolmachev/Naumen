@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/adminCSS/requestStatus.css">
     <title th:text="${'Статус заявок'}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<section class="sectionRequest">
+<section>
     <div class="newRequest1">
         <h1>Список ответов на поданные заявки</h1>
         <div class="DivRequest">
@@ -32,32 +32,21 @@
                     </option>
                 </datalist>
 
-<!--                <input  type="hidden" id="statusFilter"  name="filter" placeholder="Поиск по статусу заявки" />-->
-<!--                <select class="inn" required onchange="document.getElementById('statusFilter').value=this.value">-->
-<!--                    <option value="" disabled selected hidden>Статус заявки</option>-->
-<!--                    <option value="Выполнено">Выполнено</option>-->
-<!--                    <option value="На выполнении">На выполнении</option>-->
-<!--                    <option value="Не выполнено">Не выполнено</option>-->
-<!--                </select>-->
-
-
-                    <input  list="statusR" type="search" class="inn"
-                            onkeyup="checkParamsEdit()" name="filter" placeholder="Статус заявки" id="statusFilter" />
-
+                    <input  list="statusR" type="search" class="inn" onkeyup="checkParamsEdit()" name="filter" placeholder="Статус заявки" id="statusFilter" />
                     <datalist id="statusR">
                         <option value="Выполнено">
                         <option value="На выполнении">
                         <option value="Не выполнено">
                     </datalist>
 
-                <div class="DivRequest1">
+                <div class="DivRequest">
                     <button class="btnComment" id="submitFilter" type="submit">Найти</button>
                 </div>
             </form>
         </div>
 
         <div th:each="el : ${requests}" class="request">
-<div class="inline">
+<div>
     <div class="nameRequest">
         <h4>Заказчик:</h4>
         <p class="p" th:text="${el.fromWhom}"></p>
@@ -93,13 +82,9 @@
 </section>
 
 
-<div class="footer">
-    <p> &copy; "Предприятие "АБЦ" 2021.</p>
-</div>
-
+<div th:insert="blocksHTML/footer :: footer"></div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="/js/request.js"></script>
-
+<script src="/js/allScripts.js"></script>
 </body>
 
 </html>

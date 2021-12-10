@@ -3,10 +3,10 @@
       xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/adminCSS/admin.css"/>
     <title th:text="${title}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
     <header th:insert="blocksHTML/headerAdmin :: headerAdmin"></header>
 </head>
 
@@ -33,10 +33,6 @@
                                 th:value="${staff}"
                                 th:text="${staff}">
                         </option>
-<!--                        <option th:each="position : ${positions}"-->
-<!--                                th:value="${position}"-->
-<!--                                th:text="${position}">-->
-<!--                        </option>-->
                     </datalist>
             </div>
         </div>
@@ -45,11 +41,11 @@
 
 </section>
 
-<section class="sectionRequest">
+<section >
     <div class="StaffsFilter">
         <h1>Список сотрудников</h1>
 
-        <div class="DivRequest" >
+        <div>
             <form method="post" th:action="filter-staff">
 
 
@@ -63,7 +59,7 @@
                     </datalist>
                 </div>
 
-                <div class="DivRequest1">
+                <div class="filterSearch">
                     <button class="btnComment" id="submitFilter"  type="submit">Найти</button>
                 </div>
             </form>
@@ -85,7 +81,7 @@
                     <div th:text="${el.position}" class="staffReq"><input type="text" id="phonde" name="phone" ></div>
                 </div>
 
-                <div class="inline">
+                <div >
                     <div class="btnEdit"><a th:href="'/admin/' + ${el.id} + '/edit'">Редактировать</a></div>
                     <form  th:action="'/admin/' + ${el.id} +'/remove'" method="post">
                         <button class="btnDelete" type="submit">Удалить</button>
@@ -96,12 +92,11 @@
     </div>
 </section>
 
-<div class="footer">
-    <p> &copy; "Предприятие "АБЦ" 2021.</p>
-</div>
+<div th:insert="blocksHTML/footer :: footer"></div>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="/js/request.js"></script>
+<!--<script src="/js/request.js"></script>-->
+<script src="/js/allScripts.js"></script>
 </body>
 
 
