@@ -325,7 +325,7 @@ public class AdminController {
     public String adminAccount(Model model) {
         model.addAttribute("title", "Аккаунты");
         model.addAttribute("userForm", new Account());
-        model.addAttribute("listRoles", roleRepository.findAll());
+        model.addAttribute("listRoles", roleRepository.findAllByOrderByIdDesc());
         model.addAttribute("allUsers", userService.allAccounts());
         return "adminHTML/account";
     }
@@ -336,14 +336,14 @@ public class AdminController {
     public String addAccount(@ModelAttribute("userForm") @Valid Account userForm, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("listRoles", roleRepository.findAll());
+            model.addAttribute("listRoles", roleRepository.findAllByOrderByIdDesc());
             model.addAttribute("allUsers", userService.allAccounts());
             return "adminHTML/account";
 
         }
         if (!userService.saveUser(userForm)){
             model.addAttribute("usernameError", "Аккаунт с таким логином уже существует");
-            model.addAttribute("listRoles", roleRepository.findAll());
+            model.addAttribute("listRoles", roleRepository.findAllByOrderByIdDesc());
             model.addAttribute("allUsers", userService.allAccounts());
             return "adminHTML/account";
         }
@@ -361,59 +361,59 @@ public class AdminController {
 
     /*----------- Выводим таблицу заявок с обратной связью -----------*/
 
-    @GetMapping("/admin-status")
-    public String adminStatusRequest( Model model) {
-        Collection<Staff> staffs = staffRepository.findAllByOrderByIdDesc();
-        model.addAttribute("positions", extractPositions(staffs));
-        Iterable<Request> requests = requestRepository.findAllByOrderByIdDesc();
-        model.addAttribute("requests", requests);
-        return "adminHTML/requestStatus";
-    }
+//    @GetMapping("/admin-status")
+//    public String adminStatusRequest( Model model) {
+//        Collection<Staff> staffs = staffRepository.findAllByOrderByIdDesc();
+//        model.addAttribute("positions", extractPositions(staffs));
+//        Iterable<Request> requests = requestRepository.findAllByOrderByIdDesc();
+//        model.addAttribute("requests", requests);
+//        return "adminHTML/requestStatus";
+//    }
 
     /*-----------Фильтр по заявкам, поиск по статусу и должности завителя-----------*/
-
-    @PostMapping("filter-request-from-whom")
-    public String AllRequestAdminFilterFromWhom (@RequestParam String filter, @RequestParam String fromWhom, @RequestParam String toWhom, Model model) {
-        Iterable<Request> requests;
-        Collection<Staff> staffs = staffRepository.findAll();
-
-        /*----------- Показать по статусу, заказчику и исполнителю -----------*/
-        if (filter !=null && !filter.isEmpty() && fromWhom !=null && !fromWhom.isEmpty() && toWhom !=null && !toWhom.isEmpty()){
-            requests = requestRepository.findAllByStatusAndFromWhomAndToWhom(filter, fromWhom, toWhom);
-
-            /*----------- Показать по статусу и заказчику -----------*/
-        } else if (filter !=null && !filter.isEmpty() && fromWhom !=null && !fromWhom.isEmpty()){
-            requests = requestRepository.findAllByStatusAndFromWhom(filter, fromWhom);
-
-            /*----------- Показать по статусу и исполнителю -----------*/
-        } else if (filter !=null && !filter.isEmpty() && toWhom !=null && !toWhom.isEmpty()){
-            requests = requestRepository.findAllByStatusAndToWhomOrderByIdDesc(filter, toWhom);
-
-            /*-----------Показать по исполнителю и заказчику-----------*/
-        } else if (fromWhom !=null && !fromWhom.isEmpty() && toWhom !=null && !toWhom.isEmpty()){
-            requests = requestRepository.findAllByFromWhomAndToWhom(fromWhom, toWhom);
-
-            /*-----------Показать по статусу-----------*/
-        } else if (filter !=null && !filter.isEmpty()){
-            requests = requestRepository.findAllByStatusOrderByIdDesc(filter);
-
-            /*-----------Показать по заказчику-----------*/
-        } else if (fromWhom !=null && !fromWhom.isEmpty()) {
-            requests = requestRepository.findAllByFromWhomOrderByIdDesc(fromWhom);
-
-            /*-----------Показать исполнителю-----------*/
-        } else if (toWhom !=null && !toWhom.isEmpty()) {
-            requests = requestRepository.findAllByToWhomOrderByIdDesc(toWhom);
-
-            /*-----------Показать все когда ничего не выбрано-----------*/
-        } else {
-            requests = requestRepository.findAllByOrderByIdDesc();
-        }
-        model.addAttribute("positions", extractPositions(staffs));
-        model.addAttribute("staffs", staffs);
-        model.addAttribute("requests", requests);
-        return "adminHTML/requestStatus";
-    }
+//
+//    @PostMapping("filter-request-from-whom")
+//    public String AllRequestAdminFilterFromWhom (@RequestParam String filter, @RequestParam String fromWhom, @RequestParam String toWhom, Model model) {
+//        Iterable<Request> requests;
+//        Collection<Staff> staffs = staffRepository.findAll();
+//
+//        /*----------- Показать по статусу, заказчику и исполнителю -----------*/
+//        if (filter !=null && !filter.isEmpty() && fromWhom !=null && !fromWhom.isEmpty() && toWhom !=null && !toWhom.isEmpty()){
+//            requests = requestRepository.findAllByStatusAndFromWhomAndToWhom(filter, fromWhom, toWhom);
+//
+//            /*----------- Показать по статусу и заказчику -----------*/
+//        } else if (filter !=null && !filter.isEmpty() && fromWhom !=null && !fromWhom.isEmpty()){
+//            requests = requestRepository.findAllByStatusAndFromWhom(filter, fromWhom);
+//
+//            /*----------- Показать по статусу и исполнителю -----------*/
+//        } else if (filter !=null && !filter.isEmpty() && toWhom !=null && !toWhom.isEmpty()){
+//            requests = requestRepository.findAllByStatusAndToWhomOrderByIdDesc(filter, toWhom);
+//
+//            /*-----------Показать по исполнителю и заказчику-----------*/
+//        } else if (fromWhom !=null && !fromWhom.isEmpty() && toWhom !=null && !toWhom.isEmpty()){
+//            requests = requestRepository.findAllByFromWhomAndToWhom(fromWhom, toWhom);
+//
+//            /*-----------Показать по статусу-----------*/
+//        } else if (filter !=null && !filter.isEmpty()){
+//            requests = requestRepository.findAllByStatusOrderByIdDesc(filter);
+//
+//            /*-----------Показать по заказчику-----------*/
+//        } else if (fromWhom !=null && !fromWhom.isEmpty()) {
+//            requests = requestRepository.findAllByFromWhomOrderByIdDesc(fromWhom);
+//
+//            /*-----------Показать исполнителю-----------*/
+//        } else if (toWhom !=null && !toWhom.isEmpty()) {
+//            requests = requestRepository.findAllByToWhomOrderByIdDesc(toWhom);
+//
+//            /*-----------Показать все когда ничего не выбрано-----------*/
+//        } else {
+//            requests = requestRepository.findAllByOrderByIdDesc();
+//        }
+//        model.addAttribute("positions", extractPositions(staffs));
+//        model.addAttribute("staffs", staffs);
+//        model.addAttribute("requests", requests);
+//        return "adminHTML/requestStatus";
+//    }
 
 
 //    @ExceptionHandler(AccessDeniedException.class)
@@ -443,6 +443,36 @@ public class AdminController {
         }
 
         return "redirect:/";
+    }
+
+    /*----------- Значения из БД занесены в форму редактирования -----------*/
+
+    @GetMapping("/registration/{id}/edit")
+    public String stafdfEdit (@PathVariable(value = "id") long id, Model model) {
+        if(!roleRepository.existsById (id)){
+            return "redirect:/admin-t";
+        }
+        Collection<Role> roles = roleRepository.findAll();
+//        model.addAttribute("positions", extractPositions(staffs));
+        Optional<Role> post = roleRepository.findById(id);
+        ArrayList<Role> res = new ArrayList<>();
+        post.ifPresent(res::add);
+        model.addAttribute("post", res);
+        return "homeHTML/registration";
+    }
+
+    /*-----------Редактирование сотрудника и сохранение изменений-----------*/
+
+    @PostMapping("/registration/{id}/edit")
+    public String staffUdpdate(@PathVariable(value = "id") long id,
+                              @RequestParam String name,
+                              @RequestParam String rusName,
+                              Model model) throws Exception {
+        Role post = roleRepository.findById(id).orElseThrow(Exception::new);
+        post.setName(name);
+        post.setRusName(rusName);
+        roleRepository.save(post);
+        return "redirect:/registration";
     }
 
 }

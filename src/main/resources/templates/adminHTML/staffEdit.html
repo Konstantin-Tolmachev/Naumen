@@ -38,11 +38,15 @@
                                 </option>
                             </datalist>
                         </div>
-                        <form th:action="@{/AllStaff}" method="post" >
-                            <button class="btnUpdateStaff" type="submit" id="btnUpdateStaff" disabled>Обновить</button>
-                        </form>
+<!--                        <form th:action="@{/AllStaff}" method="post" >-->
+                        <div class="inline">
+                                <form th:action="@{/admin}" method="post" >
+                                    <button class="btnUpdateStaff" type="submit" id="btnUpdateStaff" disabled>Обновить</button>
+                                </form>
+                            <div class="btnBack"><a href="/admin">Назад</a></div>
+                        </div>
                     </form>
-                    <button class="btnBack" onclick="document.location='/admin'">Назад</button>
+<!--                    <button class="btnBack" onclick="document.location='/admin'">Назад</button>-->
                 </div>
             </div>
 

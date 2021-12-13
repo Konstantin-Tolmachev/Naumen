@@ -30,6 +30,7 @@
 
                 <div>
                     <input type="password" onkeyup="checkParamsAddAccount()" id="password" th:field="*{password}" placeholder="Пароль*">
+                    <a href="#" class="password-control" onclick="return show_hide_account_password(this);"></a>
                     <p th:if="${#fields.hasErrors('password')}"
                        th:class="${#fields.hasErrors('password')}? error">Минимальное значение 3 символа</p>
                 </div>
@@ -37,7 +38,7 @@
                 <input list="characterRoles"  th:field="*{roles}" onkeyup="checkParamsAddAccount()" id="roles" min="1" max="2" size="1"  placeholder="Права доступа*">
                 <datalist id="characterRoles" >
                     <option th:each="role : ${listRoles}"
-                            th:text="${role.name}"
+                            th:utext="${role.rusName}"
                             th:value="${role.id}">
                     </option>
                 </datalist>
@@ -59,7 +60,8 @@
         <div class="inputAccount" >
             <div th:text="${el.username}"></div>
             <div th:text="${el.password}"></div>
-            <div th:each="role : ${el.roles}" th:text="${role.name}"></div>
+            <div th:each="role : ${el.roles}" th:text="${role.rusName}"></div>
+
         </div>
 
         <form  th:action="'/admin-account/' + ${el.id} +'/remove'" method="post">

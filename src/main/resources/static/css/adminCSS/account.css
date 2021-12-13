@@ -94,6 +94,7 @@ body {
     column-count: 3;
     text-align: center;
     padding-bottom: 1%;
+    position: relative;
 }
 
 /*Размер шрифта*/
@@ -225,6 +226,22 @@ input#username, #password, #roles{
     color: red;
     font-size: 0.8rem;
     margin-bottom: 1%;
+}
+
+/*Расположение глазика у поля пароль*/
+.password-control {
+    position: absolute;
+    top: 11px;
+    right: 35%;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+}
+
+/*Глазик*/
+.password-control.view {
+    background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
 }
 
 /*Расположение подвала*/

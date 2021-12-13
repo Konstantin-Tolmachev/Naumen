@@ -27,7 +27,7 @@
                            onkeyup="checkParamsRequestForStaff()" name="level" placeholder="Уровень заявки*" id="level" />
 
                     <datalist id="levelS">
-                        <option value="В течении дня">
+                        <option value="В течение дня">
                         <option value="Срочный">
                     </datalist>
                 </div>
@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="DivRequest">
-                    <textarea onkeyup="checkParamsRequestForStaff()" id="text" class="size" name="text" placeholder="Опишите проблему*"></textarea>
+                    <textarea onkeyup="checkParamsRequestForStaff()" id="text" class="size" name="text" placeholder="Описание проблемы*"></textarea>
                 </div>
                 <div class="DivRequest">
                     <Button class="btnAddRequest" id="submit" type="submit" disabled="disabled" >Отправить заявку</Button>
@@ -67,12 +67,11 @@
 
 <section>
     <div class="newRequest1">
-        <h1>Список заявок</h1>
+        <h1>Входящие заявки</h1>
         <div class="DivRequest">
             <form method="post" th:action="staff-filter-request">
 
                 <input type="hidden" th:value="${#authentication.name}"  id="toWhomFilter" name="toWhom" placeholder="toWhom" />
-
 
                     <input list="levelF"  type="search" class="inn"
                            onkeyup="checkParams()" name="filter" placeholder="Поиск по статусу заявки" id="statusFilter" />
@@ -82,8 +81,6 @@
                         <option value="На выполнении">
                         <option value="Не выполнено">
                     </datalist>
-
-
 
                 <div class="DivRequest">
                     <button class="btnSearchFilter" id="submitFilter"  type="submit">Найти</button>
@@ -97,10 +94,10 @@
             <h4>Заказчик:</h4>
             <div class="allDiv">
                 <div class="c1">
-                    <div class="staffReq">Дата подачи заявки</div>
-                    <div class="staffReq">Уровень</div>
-                    <div class="staffReq">№ кабинета</div>
-                    <div class="staffReq">Заказчик</div>
+                    <div class="staffReq1">Дата подачи заявки</div>
+                    <div class="staffReq1">Уровень</div>
+                    <div class="staffReq1">№ кабинета</div>
+                    <div class="staffReq1">Заказчик</div>
                 </div>
                 <div class="c1">
                     <div th:text="${el.createDate}" class="staffReq"><input type="text" id="createDate" name="createDate"></div>
@@ -116,10 +113,10 @@
                 </div>
                 <h4>Исполнитель:</h4>
                 <div class="c3">
-                    <div class="staffReq">Исполнитель</div>
-                    <div class="staffReq">Статус</div>
-                    <div class="staffReq">ФИО</div>
-                    <div class="staffReq">Дата выполнения</div>
+                    <div class="staffReq1">Исполнитель</div>
+                    <div class="staffReq1">Статус</div>
+                    <div class="staffReq1">ФИО</div>
+                    <div class="staffReq1">Дата выполнения</div>
                 </div>
 
                 <div class="c3">

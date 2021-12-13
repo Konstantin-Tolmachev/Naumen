@@ -78,7 +78,8 @@ body {
     margin-bottom: 3%;
     border-radius: 5px;
     background-color: white;
-    height: 900px;
+    min-height: 200px;
+    max-height: 900px;
     overflow: scroll;
     overflow-x: hidden;
 }
@@ -228,6 +229,15 @@ body {
 }
 
 /**/
+.staffReq1{
+    display: table;
+    margin:  auto;
+    padding-bottom: 3%;
+    font-size: 1.2rem;
+    font-weight:bold ;
+}
+
+/**/
 .wrap2{
     padding-bottom:1%;
     margin:  auto;
@@ -264,6 +274,7 @@ textarea#text,
     margin-top: 1%;
     margin-bottom: 1%;
     font-size: 1.2rem;
+    font-style:oblique;
 }
 
 /**/

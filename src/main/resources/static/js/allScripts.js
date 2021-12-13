@@ -12,6 +12,20 @@ function show_hide_password(target){
     return false;
 }
 
+/* В форме добавления аккаунта в поле password можно посмотреть пароль adminHTML/admin-account */
+
+function show_hide_account_password(target){
+    var input = document.getElementById('password');
+    if (input.getAttribute('type') == 'password') {
+        target.classList.add('view');
+        input.setAttribute('type', 'text');
+    } else {
+        target.classList.remove('view');
+        input.setAttribute('type', 'password');
+    }
+    return false;
+}
+
 /* Кнопка доступна, если все поля заполнены в форме для добавления нового сотрудника adminHTML/admin.html*/
 function checkParamsAddNewStaff() {
     var addLname = $('#addLname').val();

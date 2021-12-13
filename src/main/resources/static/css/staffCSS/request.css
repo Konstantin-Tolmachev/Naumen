@@ -239,6 +239,15 @@ textarea#text,#textEditStaff,#commentEditStaff{
 }
 
 /**/
+.staffReq1{
+    display: table;
+    margin:  auto;
+    padding-bottom: 3%;
+    font-size: 1.2rem;
+    font-weight:bold ;
+}
+
+/**/
 .wrap2{
     margin:  auto;
     font-size: 1.1rem;
@@ -249,6 +258,7 @@ textarea#text,#textEditStaff,#commentEditStaff{
     margin-top: 1%;
     margin-bottom: 1%;
     font-size: 1.2rem;
+    font-style:oblique;
 }
 
 /**/

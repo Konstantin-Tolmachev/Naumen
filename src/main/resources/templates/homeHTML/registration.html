@@ -30,6 +30,37 @@
 </section>
 
 
+<section>
+    <div class="allStaffs">
+        <h1>Редактировать сотрудника</h1>
+        <div>
+            <div>
+                <div class="c1">
+                    <div class="staffReq1">name</div>
+                    <div class="staffReq1">rusName</div>
+
+                </div>
+                <div>
+
+                    <form  method="post">
+                        <div  th:each="el : ${post}" class="c1">
+                            <div class="staffReq"><input type="text"  th:value="${el.name}"     id="name" name="name" placeholder="name"></div>
+                            <div class="staffReq"><input type="text"  th:value="${el.rusName}" id="rusName" name="rusName" placeholder="rusName"></div>
+
+                        </div>
+                        <form th:action="@{/admin-t}" method="post" >
+                            <button class="btnUpdateStaff" type="submit" id="btnUpdateStaff" >Обновить</button>
+                        </form>
+                    </form>
+                    <button class="btnBack" onclick="document.location='/admin'">Назад</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
 <div class="footer">
     <p> &copy; Санаторий профилакторий "Озеро Глухое" 2021.</p>
 </div>

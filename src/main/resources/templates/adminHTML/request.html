@@ -28,7 +28,7 @@
                         <datalist id="characterLevel" >
                             <option value="" disabled selected hidden>Уровень заявки*</option>-->
                             <option value="Срочный">Срочный</option>
-                            <option value="В течении дня">В течении дня</option>
+                            <option value="В течение дня">В течение дня</option>
                         </datalist>
                 </div>
 
@@ -55,7 +55,7 @@
 
                 <div class="DivRequest">
                     <textarea onkeyup="checkParams()" id="text" class="size" name="text"
-                              placeholder="Опишите пробелему*"></textarea>
+                              placeholder="Описание проблемы*"></textarea>
                 </div>
                 <div class="DivRequest">
                     <Button class="btnAddRequest" id="submit" type="submit" disabled="disabled" >Отправить заявку</Button>
@@ -107,10 +107,10 @@
             <h4>Заказчик:</h4>
             <div class="allDiv">
                 <div class="c1">
-                    <div class="staffReq">Дата подачи заявки</div>
-                    <div class="staffReq">Уровень</div>
-                    <div class="staffReq">№ кабинета</div>
-                    <div class="staffReq">Заказчик</div>
+                    <div class="staffReq1">Дата подачи заявки</div>
+                    <div class="staffReq1">Уровень</div>
+                    <div class="staffReq1">№ кабинета</div>
+                    <div class="staffReq1">Заказчик</div>
                 </div>
                 <div class="c1">
                     <div th:text="${el.createDate}" class="staffReq"><input type="text" name="createDate" id="createDate" ></div>
@@ -127,10 +127,10 @@
                 </div>
                 <h4>Исполнитель:</h4>
                 <div class="c3">
-                    <div class="staffReq">Исполнитель</div>
-                    <div class="staffReq">Статус</div>
-                    <div class="staffReq">ФИО</div>
-                    <div class="staffReq">Дата выполнения</div>
+                    <div class="staffReq1">Исполнитель</div>
+                    <div class="staffReq1">Статус</div>
+                    <div class="staffReq1">ФИО</div>
+                    <div class="staffReq1">Дата выполнения</div>
                 </div>
 
                 <div class="c3">

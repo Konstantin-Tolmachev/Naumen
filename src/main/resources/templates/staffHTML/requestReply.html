@@ -19,18 +19,22 @@
         <div th:each="el : ${post}">
 
             <div class="DivRequest">
+                <p>№ кабинета</p>
                 <input class="inc" readonly type="text" th:value="${el.room}"  id="roomEdit" name="room" placeholder="№ кабинета">
             </div>
 
             <div class="DivRequest">
+                <p>Уровень заявки</p>
                 <input  class="inc" readonly th:value="${el.level}"  name="level" placeholder="Уровень заявки" id="levelEdit" />
             </div>
 
             <div class="DivRequest">
+                <p>Заказчик</p>
                 <input  class="inc" readonly  th:value="${el.fromWhom}"  name="fromWhom" placeholder="Заявитель" id="fromWhomEdit" />
             </div>
 
             <div class="DivRequest">
+                <p>Исполнитель</p>
                 <input   class="inc" readonly list="characterToWhom" th:value="${el.toWhom}"  name="toWhom" placeholder="Исполнитель" id="toWhomEditStaff" />
                 <datalist id="characterToWhom" >
                     <option th:each="position : ${positions}"
@@ -42,6 +46,7 @@
 
 
             <div class="DivRequest">
+                <p>Статус</p>
                 <input  list="characterStatus" class="inn" type="search"
                         onchange="checkParamsRequestEditForStaff()" name="status" placeholder="Статус заявки" id="statusEditStaff" />
                 <datalist id="characterStatus" >
@@ -53,6 +58,7 @@
             </div>
 
             <div class="DivRequest">
+                <p>ФИО</p>
                 <input list="characterName" class="inn" type="search" onchange="checkParamsRequestEditForStaff()" name="name" id="nameEditStaff" placeholder="ФИО">
                 <datalist id="characterName" >
                     <option
@@ -65,17 +71,22 @@
             </div>
 
             <div class="DivRequest">
-                <textarea  class="sizeGray" readonly name="text"  id="textEditStaff" placeholder="Описать проблему" th:text="${el.text}"></textarea>
+                <p>Описание проблемы</p>
+                <textarea  class="sizeGray" readonly name="text"  id="textEditStaff" placeholder="Описание проблемы" th:text="${el.text}"></textarea>
             </div>
             <div class="DivRequest">
+                <p>Оставить комментарий</p>
                 <textarea  class="size" name="comment"  id="commentEditStaff" placeholder="Оставить комментарий" ></textarea>
             </div>
-            <form th:action="@{/staff-request}" method="post" >
-                <input type="submit"  id="submitEditStaff" class="btnReplyRequest" disabled  value="Ответить"  >
-            </form>
+                <div class="inline">
+                    <form th:action="@{/staff-request}" method="post" >
+                        <input type="submit"  id="submitEditStaff" class="btnReplyRequest" disabled  value="Ответить"  >
+                    </form>
+                        <div class="btnBack"><a href="/staff-request">Назад</a></div>
+                </div>
         </div>
     </form>
-    <button class="btnBack" onclick="document.location='/staff-request'">Назад</button>
+<!--    <button class="btnBack" onclick="document.location='/staff-request'">Назад</button>-->
 </section>
 
 <div th:insert="blocksHTML/footer :: footer"></div>
