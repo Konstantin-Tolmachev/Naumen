@@ -7,7 +7,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="">
     <header th:insert="blocksHTML/headerAdmin :: headerAdmin"></header>
-
 </head>
 
 <body>
@@ -38,7 +37,6 @@
                                 </option>
                             </datalist>
                         </div>
-<!--                        <form th:action="@{/AllStaff}" method="post" >-->
                         <div class="inline">
                                 <form th:action="@{/admin}" method="post" >
                                     <button class="btnUpdateStaff" type="submit" id="btnUpdateStaff" disabled>Обновить</button>
@@ -46,10 +44,8 @@
                             <div class="btnBack"><a href="/admin">Назад</a></div>
                         </div>
                     </form>
-<!--                    <button class="btnBack" onclick="document.location='/admin'">Назад</button>-->
                 </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -59,6 +55,5 @@
 </body>
 
 <div th:insert="blocksHTML/footer :: footer"></div>
-
 
 </html>

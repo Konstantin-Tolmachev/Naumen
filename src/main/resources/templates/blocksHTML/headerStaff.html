@@ -1,6 +1,5 @@
 <div th:fragment="headerStaff"
-     xmlns:th="http://www.thymeleaf.org"
-     xmlns:sec="http://www.w3.org/1999/xhtml">
+     xmlns:th="http://www.thymeleaf.org">
     <div class="divPosition">
         <div class="position">Должность:</div>
         <div class="positionAuth" th:text="${#authentication.name}"></div>
@@ -17,5 +16,4 @@
             </li>
         </ul>
     </nav>
-
 </div>

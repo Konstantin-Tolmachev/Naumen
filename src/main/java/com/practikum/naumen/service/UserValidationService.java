@@ -6,8 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserValidationService {
 
-    public String validateUser(Account userForm) {
+    /*----------- Сообщение если аккаунт существует при создании нового аккаунта -----------*/
 
+    public String validateUser(Account userForm) {
         String message = "";
         return message;
     }

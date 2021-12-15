@@ -23,10 +23,8 @@
                     </option>
                 </datalist>
 
-
                 <input  list="statusR" class="inn"
                         onkeyup="checkParamsEdit()" name="filter" placeholder="Статус заявки" id="statusFilter" />
-
                 <datalist id="statusR">
                     <option value="Выполнено">
                     <option value="На выполнении">
@@ -39,8 +37,7 @@
         </div>
 
             <div th:if="${#authentication.name == el.fromWhom}" th:each="el : ${requests}" class="request">
-                <div >
-
+                <div>
                     <div class="nameRequest">
                         <h4>Заказчик:</h4>
                         <p class="p" th:text="${el.fromWhom}"></p>
@@ -51,23 +48,23 @@
                         <p class="p" th:text="${el.toWhom}"></p>
                     </div>
 
-                <div class="nameRequest">
-                    <h4>Статус:</h4>
-                    <p class="p" th:text="${el.status}"></p>
-                </div>
+                    <div class="nameRequest">
+                        <h4>Статус:</h4>
+                        <p class="p" th:text="${el.status}"></p>
+                    </div>
+
+                    <div class="nameRequest">
+                        <h4>Именование заявки:</h4>
+                        <label>
+                            <p class="p" th:text="${el.text}"></p>
+                        </label>
+                    </div>
 
                 <div class="nameRequest">
-                    <h4>Именование заявки:</h4>
-                    <label>
-                        <p class="p" th:text="${el.text}"></p>
-                    </label>
-                </div>
-
-                <div class="nameRequest">
-                    <h4>Комментарий:</h4>
-                    <label>
-                        <p class="p" th:text="${el.comment}"></p>
-                    </label>
+                        <h4>Комментарий:</h4>
+                        <label>
+                            <p class="p" th:text="${el.comment}"></p>
+                        </label>
                 </div>
             </div>
         </div>

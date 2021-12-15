@@ -1,6 +1,5 @@
 package com.practikum.naumen.configs;
 
-
 import com.practikum.naumen.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,8 +10,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
@@ -28,12 +25,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    /* Пароль при создании учетной записи НЕ шифруется */
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//    }
-
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
 
     @Autowired
@@ -44,9 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-
                 .authorizeRequests()
-                //     .antMatchers("/css/**","/js/**").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/staff-request/","/staff-request/**","/staff-status","/staff-filter-request").hasRole("STAFF")
                 .antMatchers("/admin","/admin/**","/admin-request","/admin-status","/admin-account","/filter-staff","/filter-request","/filter-request-from-whom").hasRole("ADMIN")
@@ -69,13 +58,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder());
     }
-
-    /* Пароль не шифруется при создании учетной записи */
-//    @Autowired
-//    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userService).passwordEncoder(passwordEncoder());
-//    }
-
 
     /* Разрешаем Spring Security допускать следующие директории */
     @Override

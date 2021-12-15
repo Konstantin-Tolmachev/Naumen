@@ -1,11 +1,9 @@
 package com.practikum.naumen.models;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 
 @Entity
 public class Request {
@@ -16,13 +14,10 @@ public class Request {
     private Long id;
     @Column(name = "text", length = 1000)
     private String text;
-
     private String room;
-
     private String  level, fromWhom, toWhom, status, name, createDate, endDate, comment;
 
     public Request( String level, String room, String fromWhom,String text, String toWhom, String status, String name, String createDate, String comment, String endDate) {
-
         this.level = level;
         this.room = room;
         this.fromWhom = fromWhom;

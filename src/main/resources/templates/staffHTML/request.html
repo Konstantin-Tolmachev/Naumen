@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/staffCSS/request.css"/>
@@ -31,7 +32,6 @@
                         <option value="Срочный">
                     </datalist>
                 </div>
-
 
                 <div class="DivRequest">
                     <input list="characterFromWhom" class="inn" th:value="${#authentication.name}" onkeyup="checkParamsRequestForStaff()" id="fromWhom" name="fromWhom" placeholder="Заявитель*">
@@ -84,7 +84,6 @@
 
                 <div class="DivRequest">
                     <button class="btnSearchFilter" id="submitFilter"  type="submit">Найти</button>
-
                 </div>
             </form>
         </div>
@@ -118,14 +117,12 @@
                     <div class="staffReq1">ФИО</div>
                     <div class="staffReq1">Дата выполнения</div>
                 </div>
-
                 <div class="c3">
                     <div th:text="${el.toWhom}" class="staffReq"><input type="text" id="RtoWhom" name="toWhom"></div>
                     <div th:text="${el.status}" class="staffReq"><input type="text" id="status" name="status"></div>
                     <div th:text="${el.name}" class="staffReq"><input type="text" id="name" name="name"></div>
                     <div th:text="${el.endDate}" class="staffReq"><input type="text" id="endDate" name="endDate"></div>
                 </div>
-
                 <h4>Комментарий:</h4>
                 <div class="c2">
                     <div th:text="${el.comment}" class="wrap2">

@@ -52,10 +52,9 @@ public class StaffController {
                                   @RequestParam String toWhom,
                                   Model model) {
         Request request;
-        if  (room == "") {
+        if  (Objects.equals(room, "")) {
             request = new Request (level, "Не указано",fromWhom, text, toWhom,"Не выполнено","-", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")), "-", "-");
-        }
-        else {
+        }else {
             request = new Request(level, room, fromWhom, text, toWhom, "Не выполнено","-", LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")), "-", "-");
         }
         model.addAttribute("requests", requestRepository.findAllByOrderByIdDesc());
@@ -103,8 +102,8 @@ public class StaffController {
         post.setStatus(status);
         post.setName(name);
         if  (comment !=null && !comment.isEmpty()) {
-            post.setComment(comment);}
-        else {
+            post.setComment(comment);
+        }else {
             post.setComment("Комментариев не оставлено");}
         post.setEndDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm")));
         requestRepository.save(post);
@@ -118,7 +117,7 @@ public class StaffController {
         Iterable<Request> requests;
         if (filter !=null && !filter.isEmpty()){
             requests = requestRepository.findAllByStatusAndToWhomOrderByIdDesc(filter, toWhom);
-        } else {
+        }else {
             return "redirect:/staff-request";
         }
         model.addAttribute("requests", requests);
@@ -144,7 +143,7 @@ public class StaffController {
 
         if (filter !=null && !filter.isEmpty() && toWhom !=null && !toWhom.isEmpty()){
             requests = requestRepository.findAllByStatusAndToWhomOrderByIdDesc(filter, toWhom);
-        } else if (filter !=null && !filter.isEmpty()){
+        }else if (filter !=null && !filter.isEmpty()){
             requests = requestRepository.findAllByStatusOrderByIdDesc(filter);
         }else if (toWhom !=null && !toWhom.isEmpty()) {
             requests = requestRepository.findAllByToWhomOrderByIdDesc(toWhom);

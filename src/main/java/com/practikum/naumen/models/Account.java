@@ -1,6 +1,5 @@
 package com.practikum.naumen.models;
 
-
 import com.practikum.naumen.controllers.AdminController;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +20,6 @@ public class Account extends AdminController implements UserDetails {
     private String username;
     @Size(min=3)
     private String password;
-
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
@@ -31,7 +29,6 @@ public class Account extends AdminController implements UserDetails {
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
-
     }
 
     public Long getId() {

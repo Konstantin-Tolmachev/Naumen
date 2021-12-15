@@ -1,6 +1,5 @@
 package com.practikum.naumen.configs;
 
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
@@ -17,26 +16,14 @@ import java.util.Set;
 @Configuration
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-
+    /*----------- Перенаправление на страницу пользователя согласно авторизованной роли -----------*/
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-
         Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
-
         if (roles.contains("ROLE_ADMIN")) {
             httpServletResponse.sendRedirect("/admin");
         } else if (roles.contains("ROLE_STAFF")) {
             httpServletResponse.sendRedirect("/staff-request");
         }
-//        else if (!roles.contains("ROLE_STAFF") && !roles.contains("ROLE_ADMIN")) {
-//            httpServletResponse.sendRedirect("/registration");
-//        }
-
-
     }
-
-//    @ExceptionHandler(AccessDeniedException.class)
-//    public void handleError(HttpServletResponse response) throws IOException {
-//        response.sendRedirect("/registration");
-//    }
 }

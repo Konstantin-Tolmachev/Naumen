@@ -12,11 +12,12 @@ import java.util.List;
 public interface RequestRepository extends JpaRepository<Request, Long> {
 
    /*-----------Показать заявки с статусом "Не выполнено" и "На выполнении" у сотрудников - staffHTML/request-----------*/
+
     @Query("SELECT u FROM Request u WHERE  u.status = 'Не выполнено' OR u.status = 'На выполнении'  ORDER BY u.id DESC")
     Collection<Request> findAllByStatusWhere();
 
-
     /*-----------Фильтры - adminHTML/request-----------*/
+
     List<Request> findAllByStatusAndFromWhomAndToWhom(String status, String fromWhom, String toWhom);   // filter-request-from-whom
     List<Request> findAllByStatusAndFromWhom(String status, String fromWhom);   // filter-request-from-whom
     List<Request> findAllByStatusAndToWhomOrderByIdDesc(String status, String toWhom);   // filter-request-from-whom // filter-request
@@ -25,6 +26,4 @@ public interface RequestRepository extends JpaRepository<Request, Long> {
     List<Request> findAllByFromWhomOrderByIdDesc(String fromWhom);              // filter-request-from-whom
     List<Request> findAllByStatusOrderByIdDesc(String filter);                  // filter-request and filter-request-from-whom
     List<Request> findAllByOrderByIdDesc();
-
-
 }
